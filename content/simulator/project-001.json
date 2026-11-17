@@ -1,0 +1,139 @@
+{
+  "id": "project-001",
+  "code": "PROJECT 001",
+  "title": "ロックバンドのレコーディング",
+  "client": "4人組ロックバンド（架空）",
+  "summary": "ベーシックトラック（ドラム・ベース・ギター）の同時録音と、ボーカルのオーバーダブ。編集・ラフミックス・ステム書き出しまでをアシスタントとして担当する。",
+  "spec": ["48kHz / 24bit / BWF (.wav)", "クリック使用（BPM 128）", "ステムは Drums / Bass / Guitars / Vocal の4本 + 2mix"],
+  "lineup": ["Drums（Kick In / Kick Out / Snare Top / Snare Bottom / Tom 1 / Floor Tom / OH L / OH R / Room L / Room R）", "Bass（DI / Amp）", "Electric Guitar L", "Electric Guitar R", "Vocal"],
+  "level": 2,
+  "troubleCount": 3,
+  "stages": [
+    {
+      "id": "s01-session",
+      "title": "セッションを作成",
+      "brief": "エンジニアから「48k/24bit でセッション立ち上げておいて。曲名は Song A で」と指示された。",
+      "actions": ["File > Create New で 48kHz / 24bit / BWF のセッションを作成", "保存先を録音用ドライブにする", "セッション名を命名規則に合わせる（例：SongA_Rec_日付）"],
+      "decision": {
+        "q": "セッションの保存先として最も適切なのは？",
+        "choices": ["システムドライブのデスクトップ", "スタジオの録音用ドライブ", "クラウド同期フォルダ", "クライアントの USB メモリ"],
+        "answer": 1,
+        "explanation": "録音・再生の安定性と管理のため、専用の録音ドライブに保存する。クラウド同期フォルダは同期処理が録音中の書き込みに干渉する可能性がある。"
+      }
+    },
+    {
+      "id": "s02-tracks",
+      "title": "トラックを構成",
+      "brief": "編成表をもとにトラックを作成する。ベースは DI と アンプマイクの2系統で録る。",
+      "actions": ["Track > New でドラム10本、Bass DI / Bass Amp、Gtr L / Gtr R、Vox を Mono Audio で作成", "全トラックを録音前に命名", "楽器ごとにカラーを揃える"],
+      "decision": {
+        "q": "ベースを DI とアンプマイクの2トラックで録る主な理由は？",
+        "choices": ["CPU 負荷を下げるため", "ミックス時に音色の選択肢を残すため（DI の芯とアンプの質感を混ぜられる）", "ファイルサイズを小さくするため", "Pro Tools の仕様で必須だから"],
+        "answer": 1,
+        "explanation": "DI はクリアで輪郭のある音、アンプは歪みや空気感を含む音。両方録っておくとミックスでバランスを選べ、後からリアンプもできる。2系統間の位相（時間差）の確認が必要になる点も覚えておく。"
+      }
+    },
+    {
+      "id": "s03-io",
+      "title": "入出力を設定",
+      "brief": "パッチシートに従って、マイクプリからインターフェースへの入力と Pro Tools のトラック入力を対応させる。",
+      "actions": ["Setup > I/O で入力名をパッチシートに合わせる", "各トラックの Input をパッチシート通りに割り当てる", "Clock Source とサンプルレートを確認する"],
+      "decision": {
+        "q": "I/O Setup で入力パスに「Kick In」「Snare Top」のような名前を付ける利点は？",
+        "choices": ["音質が向上する", "トラックの入力割り当てミスに気づきやすく、トラブル時の切り分けが速くなる", "レイテンシーが減る", "ファイル名が短くなる"],
+        "answer": 1,
+        "explanation": "入力名とトラック名が一致していれば、割り当てミスを一目で発見できる。パッチシートと合わせて管理するのが現場の基本。",
+        "logicNote": "Logic Pro の I/O Labels で入力名を付けるのと同じ目的。"
+      }
+    },
+    {
+      "id": "s04-routing",
+      "title": "録音用ルーティングを構築",
+      "brief": "録音中にエンジニアがドラム全体の音量をまとめて調整できるようにしたい。",
+      "actions": ["ドラム全トラックの Output を Drum Bus に設定", "Stereo Aux Input（Drums）で Drum Bus を受ける", "Master Fader を作成"],
+      "decision": {
+        "q": "ドラム全体をまとめて音量調整するための構成として正しいのは？",
+        "choices": ["全ドラムトラックの Output を同じ Bus にし、その Bus を Aux Input で受ける", "全ドラムトラックに Clip Gain を設定する", "Master Fader を2本作る", "ドラムトラックを全部 Stereo で作り直す"],
+        "answer": 0,
+        "explanation": "トラック → Bus → Aux Input → Master の経路を作ると、Aux のフェーダーでドラム全体を操作できる。VCA を使う方法もある（LEVEL 4）。",
+        "logicNote": "Logic Pro の Summing Stack（Track Stack）に近い構成。"
+      }
+    },
+    {
+      "id": "s05-monitor",
+      "title": "モニタリング環境を構築",
+      "brief": "メンバー全員がヘッドフォンで演奏する。ドラマーはクリック多め、ボーカルは自分の声多めのキューを希望している。",
+      "actions": ["キュー用の Send（Cue A / Cue B）を各トラックに作成", "クリックトラックを作成し、キューへ送る", "サウンドチェックで全入力のメーターを確認"],
+      "decision": {
+        "q": "キュー（ヘッドフォン）ミックス用の Send は、通常 Pre / Post どちらに設定する？",
+        "choices": ["Post Fader：エンジニアのフェーダー操作に連動させるため", "Pre Fader：エンジニアのフェーダー操作に影響されない独立したミックスにするため", "どちらでも同じ", "Send は使わず Master から送る"],
+        "answer": 1,
+        "explanation": "Pre Fader にすると、コントロールルームでフェーダーを動かしても演奏者のヘッドフォンバランスが変わらない。",
+        "logicNote": "Logic Pro のパーソナルモニターミックスでも Send を Pre Fader にする。"
+      }
+    },
+    {
+      "id": "s06-scratch",
+      "title": "仮録音",
+      "brief": "ベーシックトラックを録り始める。テイクごとに管理できるようにしておく。",
+      "actions": ["全ドラム・ベース・ギターを Record Enable", "Pre-roll を設定して1テイク目を録音", "テイクシートに番号とメモを記入"],
+      "decision": {
+        "q": "1テイク録り終わった直後、アシスタントが最初にすべきことは？",
+        "choices": ["すぐに次のテイクを録り始める", "録音できているか（全トラックに波形があるか、クリップしていないか）を確認し、テイクを記録する", "ミックスを始める", "セッションを閉じる"],
+        "answer": 1,
+        "explanation": "録り漏れ・クリップは後から取り返せない。テイクごとに全トラックの波形とレベルを確認し、テイク番号とコメントを記録する。"
+      }
+    },
+    {
+      "id": "s07-takes",
+      "title": "テイク管理",
+      "brief": "ボーカルを同じ範囲で何度も録る。全テイクを残しながら新しいテイクを録りたい。",
+      "actions": ["新しいテイクごとに新規 Playlist を作成（またはループ録音でプレイリスト自動作成）", "Playlist 名でテイク番号が分かるようにする", "エンジニアの OK テイクをメモする"],
+      "decision": {
+        "q": "既存テイクを残したまま、空の状態で次のテイクを録るには？",
+        "choices": ["Playlist セレクターで New（新規 Playlist）を作る", "Playlist を Duplicate する", "トラックを削除して作り直す", "Undo する"],
+        "answer": 0,
+        "explanation": "New は空の Playlist を作る。Duplicate は現在の内容をコピーするので、パンチインで部分的に録り直す場合などに使う。",
+        "logicNote": "Logic Pro のサイクル録音で Take Folder にテイクが溜まるのに相当。"
+      }
+    },
+    {
+      "id": "s08-edit",
+      "title": "編集",
+      "brief": "ドラムのタイミングを数カ所修正し、ボーカルをコンピングする。",
+      "actions": ["編集前に Playlist を複製しておく", "ドラムトラックをグループ化して編集", "ボーカルを Playlists View でコンピングし、つなぎ目にクロスフェード"],
+      "decision": {
+        "q": "マルチマイクのドラムを編集するときに最も重要なことは？",
+        "choices": ["Kick だけを先に編集する", "全ドラムトラックをグループ化し、同じ位置で編集して位相関係を保つ", "Shuffle モードで編集する", "Clip Gain を全部 0 にする"],
+        "answer": 1,
+        "explanation": "複数マイクが同じ音を拾っているため、トラックごとに別々に編集するとマイク間の時間関係が崩れて位相干渉が起きる。",
+        "logicNote": "Logic Pro では Flex 編集グループ（Q-Reference）で同様の配慮をする。"
+      }
+    },
+    {
+      "id": "s09-mix",
+      "title": "ミックス（ラフ）",
+      "brief": "エンジニアがラフミックスを作る。リバーブを複数トラックで共有したい。",
+      "actions": ["リバーブ用の Stereo Aux Input を作成し、リバーブを 100% Wet で挿す", "Vox・Snare から Send で送る", "Playback Engine のバッファをミックス用に上げる"],
+      "decision": {
+        "q": "複数トラックで同じリバーブを共有する一般的な方法は？",
+        "choices": ["各トラックにリバーブを Insert する", "Aux Input にリバーブを挿し、各トラックから Send で送る", "Master Fader にリバーブを挿す", "AudioSuite でリバーブを書き込む"],
+        "answer": 1,
+        "explanation": "Send / Aux 方式なら CPU 負荷を抑えつつ、同じ空間に楽器をまとめられる。送り量で各トラックのリバーブ量を調整できる。",
+        "logicNote": "Logic Pro の Send → Aux と同じ。"
+      }
+    },
+    {
+      "id": "s10-stems",
+      "title": "ステム書き出し",
+      "brief": "Drums / Bass / Guitars / Vocal の4ステムと 2mix を、48kHz / 24bit で書き出す。",
+      "actions": ["各ステムを同じ開始位置・同じ長さで書き出す", "リバーブなどの余韻が切れないよう終了位置に余裕を取る", "ファイル名を納品ルールに合わせる"],
+      "decision": {
+        "q": "ステム書き出しで最も重要なことは？",
+        "choices": ["ステムごとに音が始まる位置から書き出す", "全ステムを同じ開始位置・同じ長さで書き出し、並べればそのまま同期するようにする", "ファイル名は自由でよい", "MP3 で書き出す"],
+        "answer": 1,
+        "explanation": "受け取った側が先頭に並べるだけで同期できるよう、全ステムの開始位置と長さを揃える。余韻が切れないよう終了位置にも余裕を取る。"
+      }
+    }
+  ]
+}

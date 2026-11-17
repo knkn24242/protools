@@ -1,0 +1,618 @@
+[
+  {
+    "id": "q1-tf-masterfader",
+    "level": 1,
+    "category": "session",
+    "type": "truefalse",
+    "difficulty": 1,
+    "q": "Pro Tools の新規セッションには、Logic Pro の Stereo Out のように Master Fader が最初から必ず存在する。",
+    "answer": 1,
+    "explanation": "×。Pro Tools の Master Fader は Track > New で自分で作成する。作らなければ存在しない。",
+    "logicNote": "Logic Pro の Stereo Out（Output チャンネルストリップ）は常に存在するため、同じ感覚でいると Master Fader の作り忘れが起きる。",
+    "lessonId": "l1-tracks"
+  },
+  {
+    "id": "q1-tf-samplerate",
+    "level": 1,
+    "category": "session",
+    "type": "truefalse",
+    "difficulty": 2,
+    "q": "Pro Tools では、セッション作成後でも Session Setup からサンプルレートを直接変更できる。",
+    "answer": 1,
+    "explanation": "×。サンプルレートは作成後に直接変更できない。変更が必要なら File > Save Copy In で別サンプルレートのコピーを作る。",
+    "logicNote": "Logic Pro は Project Settings > Audio でサンプルレートを変更できる点が異なる。",
+    "lessonId": "l1-session-create"
+  },
+  {
+    "id": "q1-fill-editmix",
+    "level": 1,
+    "category": "session",
+    "type": "fill",
+    "difficulty": 1,
+    "q": "Mac で Edit Window と Mix Window を切り替えるショートカットは「Cmd + ＿＿」。（記号1文字）",
+    "accept": [
+      "=",
+      "＝"
+    ],
+    "explanation": "Cmd + =（Windows は Ctrl + =）。",
+    "logicNote": "Logic Pro の Mixer は X キー。",
+    "lessonId": "l1-interface"
+  },
+  {
+    "id": "q1-fill-ptx",
+    "level": 1,
+    "category": "session",
+    "type": "fill",
+    "difficulty": 1,
+    "q": "現在の Pro Tools のセッションファイルの拡張子は「.＿＿＿」。",
+    "accept": [
+      "ptx",
+      ".ptx",
+      "PTX"
+    ],
+    "explanation": ".ptx。セッションファイルと Audio Files などのフォルダで1つのセッションを構成する。",
+    "logicNote": "Logic Pro のプロジェクトは .logicx（パッケージ）。",
+    "lessonId": "l1-session-create"
+  },
+  {
+    "id": "q1-choice-aux",
+    "level": 1,
+    "category": "routing",
+    "type": "choice",
+    "difficulty": 1,
+    "q": "外部シンセの音を、録音せずに Pro Tools のミキサーでモニター・処理したい。最も適したトラックは？",
+    "choices": [
+      "Audio Track",
+      "Aux Input",
+      "MIDI Track",
+      "Master Fader"
+    ],
+    "answer": 1,
+    "explanation": "Aux Input は物理入力や Bus の信号を受けて処理・出力できる。録音しない入力のモニターに使える。",
+    "logicNote": "Logic Pro では Aux チャンネルストリップの Input を物理入力にする、または External Instrument プラグインを使う方法に近い。",
+    "lessonId": "l1-tracks"
+  },
+  {
+    "id": "q1-written-saveas",
+    "level": 1,
+    "category": "delivery",
+    "type": "written",
+    "difficulty": 2,
+    "q": "Save As と Save Copy In の違いを、他スタジオへセッションを渡す場面を例に説明してください。",
+    "modelAnswer": "Save As はセッションファイル(.ptx)を別名で保存するだけで、オーディオファイルはコピーされず元のファイルを参照し続ける。Save Copy In はオーディオファイル等のコピーを含めて別の場所に保存でき、サンプルレートやファイル形式の変更も可能。他スタジオへ渡す場合は、必要な素材がすべて含まれるよう Save Copy In を使う。",
+    "points": [
+      "Save As は .ptx のみ別名（素材は共有）",
+      "Save Copy In は素材をコピーできる",
+      "Save Copy In は仕様変更（サンプルレート等）も可能",
+      "受け渡しには Save Copy In を使う"
+    ],
+    "explanation": "受け渡し時に Save As を使うと、素材が元のドライブに残ったままになり Missing Files の原因になる。",
+    "logicNote": "Logic Pro の Save a Copy As（素材をプロジェクトにコピー）に相当するのが Save Copy In。",
+    "lessonId": "l1-session-management",
+    "pointKeywords": [
+      [
+        [
+          "save as"
+        ],
+        [
+          "ptx",
+          "セッションファイル",
+          "別名"
+        ]
+      ],
+      [
+        [
+          "save copy in",
+          "copy in"
+        ],
+        [
+          "コピー",
+          "含め",
+          "まとめ"
+        ]
+      ],
+      [
+        [
+          "サンプルレート",
+          "sample rate",
+          "ビットデプス",
+          "形式",
+          "フォーマット",
+          "仕様"
+        ]
+      ],
+      [
+        [
+          "受け渡し",
+          "渡す",
+          "他スタジオ",
+          "アーカイブ"
+        ],
+        [
+          "save copy in",
+          "copy in"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "q1-trouble-nooutput",
+    "level": 1,
+    "category": "routing",
+    "type": "trouble",
+    "difficulty": 2,
+    "q": "【現場】他スタジオで作られたセッションを開いたら、再生してもモニタースピーカーから何も聞こえない。メーターは振れている。最も可能性が高い原因は？",
+    "choices": [
+      "録音レベルが低い",
+      "トラック/Master の出力パスがこのスタジオの I/O 設定と合っていない",
+      "Edit Mode が Shuffle になっている",
+      "Clip Gain が下がっている"
+    ],
+    "answer": 1,
+    "explanation": "メーターが振れているので再生自体はされている。出力パスが無効・未割り当てになっている可能性が高い。Setup > I/O の Output と、各トラック / Master Fader の出力割り当てを確認する。",
+    "logicNote": "Logic Pro は出力が現在のデバイスに自動で割り当てられることが多いため、Pro Tools の方が I/O の不一致に注意が必要。",
+    "lessonId": "l1-io-setup"
+  },
+  {
+    "id": "q1-order-newsession",
+    "level": 1,
+    "category": "session",
+    "type": "order",
+    "difficulty": 2,
+    "q": "録音可能な状態のセッションを作る手順を、正しい順序に並べてください。",
+    "choices": [
+      "案件の仕様（サンプルレート・ビットデプス・形式）を確認する",
+      "File > Create New でセッションを作成する",
+      "Playback Engine でオーディオインターフェースを選ぶ",
+      "トラックを作成して名前を付ける",
+      "トラックに入力を割り当て Record Enable してメーターを確認する"
+    ],
+    "explanation": "仕様確認 → 作成 → オーディオ設定 → トラック作成・命名 → 入力確認。トラック名は録音ファイル名に使われるため、録音前に付ける。Playback Engine の確認はトラック作成の前後どちらでもよいが、入力確認の前に済ませる。",
+    "logicNote": "Logic Pro でも流れは同じだが、Pro Tools は仕様（特にサンプルレート）を作成時に確定させる点が重要。",
+    "lessonId": "l1-session-create"
+  },
+  {
+    "id": "q1-choice-buffer-mix",
+    "level": 1,
+    "category": "session",
+    "type": "choice",
+    "difficulty": 2,
+    "q": "ミックス中に CPU 関連のエラーで再生が止まる。録音の予定はない。Playback Engine で最初に試す対処は？",
+    "choices": [
+      "H/W Buffer Size を大きくする",
+      "H/W Buffer Size を小さくする",
+      "サンプルレートを上げる",
+      "ビットデプスを下げる"
+    ],
+    "answer": 0,
+    "explanation": "バッファを大きくすると CPU の処理に余裕ができる。録音時はレイテンシーのため小さく、ミックス時は大きくするのが基本。",
+    "logicNote": "Logic Pro の I/O Buffer Size を大きくするのと同じ考え方。",
+    "lessonId": "l1-playback-engine"
+  },
+  {
+    "id": "q2-tf-fader-rec",
+    "level": 2,
+    "category": "recording",
+    "type": "truefalse",
+    "difficulty": 1,
+    "q": "Pro Tools のトラックフェーダーを上げると、録音されるファイルのレベルも上がる。",
+    "answer": 1,
+    "explanation": "×。録音レベルはマイクプリアンプ（インターフェース等）のゲインで決まる。フェーダーはモニター/再生のレベル。",
+    "logicNote": "Logic Pro でも同じ原則。",
+    "lessonId": "l2-overdub-levels"
+  },
+  {
+    "id": "q2-fill-loopres",
+    "level": 2,
+    "category": "recording",
+    "type": "fill",
+    "difficulty": 2,
+    "q": "Loop Record のオン/オフを切り替えるショートカット（Mac）は「Option + ＿」。（アルファベット1文字）",
+    "accept": [
+      "L",
+      "l",
+      "Ｌ",
+      "ｌ"
+    ],
+    "explanation": "Option + L（Windows は Alt + L）。",
+    "logicNote": "Logic Pro では Cycle（C）をオンにして録音すると Take Folder が作られる。",
+    "lessonId": "l2-loop-playlist"
+  },
+  {
+    "id": "q2-fill-preroll",
+    "level": 2,
+    "category": "recording",
+    "type": "fill",
+    "difficulty": 2,
+    "q": "Pre/Post-roll のオン/オフを切り替えるショートカット（Windows）は「Ctrl + ＿」。（アルファベット1文字）",
+    "accept": [
+      "K",
+      "k",
+      "Ｋ",
+      "ｋ"
+    ],
+    "explanation": "Ctrl + K（Mac は Cmd + K）。Alt(Option) + K はモニタリングモードの切り替えなので混同しない。",
+    "lessonId": "l2-punch-preroll"
+  },
+  {
+    "id": "q2-trouble-latency",
+    "level": 2,
+    "category": "recording",
+    "type": "trouble",
+    "difficulty": 3,
+    "q": "【現場】ミックスが進んだセッションでボーカルを追加録音することになった。歌い手が「自分の声が遅れて聞こえる」と言う。バッファは 64 samples。最も可能性が高い原因と対処は？",
+    "choices": [
+      "サンプルレートが低い → 96kHz に上げる",
+      "Master Fader 等に遅延の大きいプラグイン（ルックアヘッド型リミッター等）が挿さっている → バイパスまたは Low Latency Monitoring",
+      "Clip Gain が高い → 下げる",
+      "Playlist が多すぎる → 削除する"
+    ],
+    "answer": 1,
+    "explanation": "バッファが十分小さい場合、モニター経路上のプラグイン遅延を疑う。ミックス途中のセッションでは Master のリミッターやリニアフェイズ EQ が原因になりやすい。",
+    "logicNote": "Logic Pro では Low Latency Mode で一定以上の遅延のプラグインを自動バイパスできる。Pro Tools の Low Latency Monitoring とは仕組みが異なる。",
+    "lessonId": "l2-monitoring-latency"
+  },
+  {
+    "id": "q2-trouble-noplay",
+    "level": 2,
+    "category": "recording",
+    "type": "trouble",
+    "difficulty": 2,
+    "q": "【現場】ボーカルを録音後、プレイバックすると録音したテイクが聞こえず、マイクの生音だけが聞こえる。トラックは Record Enable のまま。原因は？",
+    "choices": [
+      "Input Only Monitoring になっている",
+      "Delay Compensation がオフ",
+      "Edit Mode が Grid",
+      "Pre-roll がオフ"
+    ],
+    "answer": 0,
+    "explanation": "Input Only では Record Enable 中のトラックは常に入力音をモニターする。Option(Alt) + K で Auto Input に切り替えるか、Record Enable を外す。",
+    "lessonId": "l2-input-monitoring"
+  },
+  {
+    "id": "q2-order-signal",
+    "level": 2,
+    "category": "recording",
+    "type": "order",
+    "difficulty": 3,
+    "q": "【現場】ボーカルマイクの信号が Pro Tools に届かない。確認する順序として適切なものに並べてください（音源側から）。",
+    "choices": [
+      "マイクとケーブルの接続・ファンタム電源（コンデンサーマイクの場合）",
+      "マイクプリアンプのゲインとメーター",
+      "オーディオインターフェースの該当入力のメーター",
+      "Pro Tools の I/O Setup で入力パスが正しいか",
+      "トラックの Input 割り当てと Record Enable / Input Monitor"
+    ],
+    "explanation": "信号経路を音源側から順に確認すると、どこで信号が途切れているかを効率よく特定できる。現場ではエンジニアに状況を報告しながら進める。",
+    "logicNote": "Logic Pro でも同じ考え方。DAW の外側（物理経路）から確認するのが基本。",
+    "lessonId": "l2-input-monitoring"
+  },
+  {
+    "id": "q2-written-autoinput",
+    "level": 2,
+    "category": "recording",
+    "type": "written",
+    "difficulty": 3,
+    "q": "パンチイン録音で Auto Input Monitoring を使う理由を、演奏者の聞こえ方の観点から説明してください。",
+    "modelAnswer": "Auto Input では、パンチ範囲に入るまでは録音済みのテイクが再生され、範囲内では入力音（生演奏）に切り替わる。演奏者はプリロール中に自分の前のテイクを聴いて流れをつかみ、パンチ範囲で自然に演奏を始められる。範囲を過ぎると再び録音済みの音に戻るので、つながりも確認できる。",
+    "points": [
+      "範囲外では録音済みテイクが聞こえる",
+      "範囲内では入力音に切り替わる",
+      "前のテイクを聴きながら自然に入れる"
+    ],
+    "explanation": "Input Only では範囲外でも入力音しか聞こえず、元テイクとのつながりを確認しにくい。",
+    "lessonId": "l2-punch-preroll",
+    "pointKeywords": [
+      [
+        [
+          "録音済",
+          "前のテイク",
+          "既存",
+          "元のテイク",
+          "再生"
+        ]
+      ],
+      [
+        [
+          "入力",
+          "生演奏",
+          "インプット",
+          "input"
+        ],
+        [
+          "切り替",
+          "切替",
+          "範囲"
+        ]
+      ],
+      [
+        [
+          "自然",
+          "流れ",
+          "入りやす",
+          "つながり",
+          "プリロール",
+          "pre-roll"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "q2-choice-headroom",
+    "level": 2,
+    "category": "recording",
+    "type": "choice",
+    "difficulty": 2,
+    "q": "ボーカルのゲインを決めるとき、最も適切なのは？",
+    "choices": [
+      "リハーサルの小さな声で決める",
+      "曲中で一番大きく歌う部分で決め、ピークに余裕を残す",
+      "メーターが常に 0dBFS 付近になるようにする",
+      "Pro Tools のフェーダーで決める"
+    ],
+    "answer": 1,
+    "explanation": "一番大きい部分でクリップしないように、ピークに余裕を持たせてゲインを決める。",
+    "lessonId": "l2-overdub-levels"
+  },
+  {
+    "id": "q2-tf-dc",
+    "level": 2,
+    "category": "recording",
+    "type": "truefalse",
+    "difficulty": 3,
+    "q": "Delay Compensation を有効にすれば、録音時の入力モニターの遅延もゼロになる。",
+    "answer": 1,
+    "explanation": "×。Delay Compensation は再生トラック間のタイミングを揃える機能で、入力モニターの遅延そのものは消せない。",
+    "lessonId": "l2-monitoring-latency"
+  },
+  {
+    "id": "q3-tf-shuffle",
+    "level": 3,
+    "category": "editing",
+    "type": "truefalse",
+    "difficulty": 1,
+    "q": "Shuffle モードでクリップを削除すると、そのトラックの後続クリップが前に詰められる。",
+    "answer": 0,
+    "explanation": "○。マルチトラック録音で1トラックだけ Shuffle で削除すると同期がずれるため、通常は Slip で作業する。",
+    "logicNote": "Logic Pro の Drag Mode『Shuffle L』に近い挙動。",
+    "lessonId": "l3-edit-modes"
+  },
+  {
+    "id": "q3-fill-smart",
+    "level": 3,
+    "category": "editing",
+    "type": "fill",
+    "difficulty": 2,
+    "q": "Smart Tool は F6 と F＿ を同時に押して有効にできる。（数字）",
+    "accept": [
+      "7",
+      "７"
+    ],
+    "explanation": "F6 + F7（または F7 + F8）。",
+    "lessonId": "l3-tools"
+  },
+  {
+    "id": "q3-fill-separate",
+    "level": 3,
+    "category": "editing",
+    "type": "fill",
+    "difficulty": 2,
+    "q": "Commands Keyboard Focus が有効なとき、クリップを分割（Separate）する1文字キーは「＿」。",
+    "accept": [
+      "B",
+      "b",
+      "Ｂ",
+      "ｂ"
+    ],
+    "explanation": "B キー。フォーカスが無効なときは Cmd(Ctrl) + E。",
+    "logicNote": "Logic Pro の Split at Playhead は既定で Cmd + T。",
+    "lessonId": "l3-tools"
+  },
+  {
+    "id": "q3-choice-clipgain-vs-fader",
+    "level": 3,
+    "category": "editing",
+    "type": "choice",
+    "difficulty": 2,
+    "q": "ボーカルの子音（サ行）だけを、ディエッサーに入る前に下げたい。最も適した方法は？",
+    "choices": [
+      "フェーダーオートメーション",
+      "Clip Gain（Clip Gain Line）",
+      "Master Fader",
+      "Send レベル"
+    ],
+    "answer": 1,
+    "explanation": "Clip Gain はインサートより前段で効くため、ディエッサーやコンプに入る前のレベルを調整できる。",
+    "logicNote": "Logic Pro では Region Gain やリージョンベースのオートメーションで近いことができる。",
+    "lessonId": "l3-clip-gain"
+  },
+  {
+    "id": "q3-trouble-click",
+    "level": 3,
+    "category": "editing",
+    "type": "trouble",
+    "difficulty": 2,
+    "q": "【現場】コンピングしたボーカルをプレイバックすると、つなぎ目で「プチッ」とノイズが鳴る。最初に行うべき対処は？",
+    "choices": [
+      "該当箇所の Clip Gain を上げる",
+      "つなぎ目にクロスフェードを付ける",
+      "Elastic Audio を有効にする",
+      "サンプルレートを変換する"
+    ],
+    "answer": 1,
+    "explanation": "編集点で波形が途切れるとクリックノイズが出る。クロスフェードで滑らかにつなぐ。複数箇所ある場合は Batch Fades でまとめて処理する。",
+    "logicNote": "Logic Pro の Quick Swipe Comping は自動でクロスフェードされるため、Pro Tools 移行直後に付け忘れが起きやすい。",
+    "lessonId": "l3-fades"
+  },
+  {
+    "id": "q3-trouble-drumphase",
+    "level": 3,
+    "category": "editing",
+    "type": "trouble",
+    "difficulty": 4,
+    "q": "【現場】マルチマイクのドラムをタイミング修正したら、キックとスネアの音が細く・薄くなった。最も可能性が高い原因は？",
+    "choices": [
+      "トラックごとに別々に編集・ストレッチしたため、マイク間の位相関係が崩れた",
+      "Clip Gain が下がった",
+      "フェードが長すぎる",
+      "Pre-roll が短い"
+    ],
+    "answer": 0,
+    "explanation": "同じ音源を複数マイクで録った場合、マイク間のタイミング関係が崩れると位相干渉で音が細くなる。Edit Group でまとめ、Beat Detective の Collection Mode などで全トラックを同じ位置で編集する。",
+    "logicNote": "Logic Pro では Flex 編集グループで Q-Reference を設定して位相関係を保つ。",
+    "lessonId": "l3-beat-detective"
+  },
+  {
+    "id": "q3-order-bd",
+    "level": 3,
+    "category": "editing",
+    "type": "order",
+    "difficulty": 3,
+    "q": "Beat Detective でドラムのタイミングを整える手順を正しい順序に並べてください。",
+    "choices": [
+      "編集前に Playlist を複製する",
+      "トラック群と範囲を選び Capture Selection",
+      "Clip Separation で分割する",
+      "Clip Conform でグリッドに合わせる",
+      "Edit Smoothing で隙間を埋めクロスフェードする"
+    ],
+    "explanation": "保険（Playlist 複製）→ 範囲取得 → 分割 → 整列 → 隙間処理。最後に全体を通して聴いて確認する。",
+    "lessonId": "l3-beat-detective"
+  },
+  {
+    "id": "q3-choice-elastic-bass",
+    "level": 3,
+    "category": "editing",
+    "type": "choice",
+    "difficulty": 2,
+    "q": "単音のベースラインのタイミングを Elastic Audio で修正する。適したアルゴリズムは？",
+    "choices": [
+      "Polyphonic",
+      "Rhythmic",
+      "Monophonic",
+      "X-Form"
+    ],
+    "answer": 2,
+    "explanation": "単音（モノフォニック）の素材には Monophonic が適する。ただし低音の素材では結果を耳で確認し、Rhythmic と比較することもある。",
+    "logicNote": "Logic Pro の Flex Mode『Monophonic』に相当。",
+    "lessonId": "l3-elastic-audio"
+  },
+  {
+    "id": "q3-written-comp",
+    "level": 3,
+    "category": "editing",
+    "type": "written",
+    "difficulty": 3,
+    "q": "Pro Tools の Playlist を使ったボーカルコンピングの手順を、Logic Pro の Quick Swipe Comping との違いに触れながら説明してください。",
+    "modelAnswer": "各テイクを別々の Playlist として録音しておき、Track View を Playlists に切り替えて全テイクをレーン表示する。各レーンをソロで聴き比べ、良い部分を Selector で範囲選択してメイン Playlist にコピー（Promote）する。これを繰り返してベストテイクを作り、最後につなぎ目にクロスフェードを付ける。Logic Pro はスワイプで範囲を選ぶと自動でクロスフェードされるが、Pro Tools はコピー方式でフェードは自分で付ける。",
+    "points": [
+      "テイクを Playlist として残す",
+      "Playlists View でレーン表示",
+      "範囲選択してメインへコピー",
+      "つなぎ目にクロスフェード",
+      "Logic は自動クロスフェード、Pro Tools は手動"
+    ],
+    "explanation": "コンプ後もテイクの Playlist は削除せず残しておく。",
+    "lessonId": "l3-comping",
+    "pointKeywords": [
+      [
+        [
+          "playlist",
+          "プレイリスト"
+        ],
+        [
+          "テイク",
+          "残",
+          "録音"
+        ]
+      ],
+      [
+        [
+          "playlists",
+          "レーン",
+          "track view",
+          "トラックビュー",
+          "並べ"
+        ]
+      ],
+      [
+        [
+          "選択",
+          "範囲"
+        ],
+        [
+          "コピー",
+          "promote",
+          "メイン",
+          "上げ"
+        ]
+      ],
+      [
+        [
+          "クロスフェード",
+          "フェード",
+          "crossfade",
+          "fade"
+        ]
+      ],
+      [
+        [
+          "自動",
+          "swipe",
+          "スワイプ",
+          "logic"
+        ],
+        [
+          "手動",
+          "自分で",
+          "フェード"
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "q3-tf-audiosuite",
+    "level": 3,
+    "category": "editing",
+    "type": "truefalse",
+    "difficulty": 2,
+    "q": "AudioSuite で処理すると、元のオーディオファイルが上書きされる。",
+    "answer": 1,
+    "explanation": "×。AudioSuite は処理結果を新しいファイルとして作成する。元ファイルは残る。",
+    "logicNote": "Logic Pro の Audio File Editor の一部の関数は元ファイルを直接変更することがあるので注意。",
+    "lessonId": "l3-audiosuite"
+  },
+  {
+    "id": "q3-choice-spot",
+    "level": 3,
+    "category": "editing",
+    "type": "choice",
+    "difficulty": 2,
+    "q": "効果音を映像のタイムコード 01:00:12:05 に正確に置きたい。最適な Edit Mode は？",
+    "choices": [
+      "Shuffle",
+      "Slip",
+      "Spot",
+      "Grid"
+    ],
+    "answer": 2,
+    "explanation": "Spot モードではクリップをクリックするとダイアログが開き、開始位置を数値で入力できる。",
+    "lessonId": "l3-edit-modes"
+  },
+  {
+    "id": "q3-fill-fades",
+    "level": 3,
+    "category": "editing",
+    "type": "fill",
+    "difficulty": 1,
+    "q": "Fades ダイアログを開くショートカット（Mac）は「Cmd + ＿」。（アルファベット1文字）",
+    "accept": [
+      "F",
+      "f",
+      "Ｆ",
+      "ｆ"
+    ],
+    "explanation": "Cmd + F（Windows は Ctrl + F）。",
+    "lessonId": "l3-fades"
+  }
+]

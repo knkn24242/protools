@@ -1,0 +1,394 @@
+[
+  {
+    "id": "l2-input-monitoring",
+    "level": 2,
+    "order": 1,
+    "title": "Input設定・Record Enable・Input Monitoring",
+    "titleEn": "Input, Record Enable & Input Monitoring",
+    "category": "recording",
+    "difficulty": 2,
+    "minutes": 20,
+    "prerequisites": ["l1-io-setup", "l1-tracks"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "録音の準備は『入力を割り当てる → Record Enableする → モニタリング方法を決める』の3段階。Pro Toolsのモニタリングには、トランスポートの状態に応じて入力音と再生音を自動で切り替える **Auto Input Monitoring** と、Record Enable中のトラックは常に入力音を聞く **Input Only Monitoring** の2モードがある。さらにトラックごとの **TrackInput Monitor** ボタンで個別に入力音を聞くこともできる。",
+    "steps": [
+      { "text": "トラックのInputセレクター（Mix WindowのI/O欄、またはEdit WindowのI/O表示）で入力パスを選ぶ。" },
+      { "text": "トラックの Record Enable ボタン（赤い丸）を押して録音待機にする。メーターに入力信号が表示されることを確認。" },
+      { "text": "モニタリングモードの切り替え：Track（または Options）メニューの Auto Input Monitoring / Input Only Monitoring。", "shortcut": { "mac": "Option + K", "win": "Alt + K" } },
+      { "text": "Auto Input：停止中は入力音、再生中は録音済みの音（パンチ範囲に入ると入力音）が聞こえる。パンチイン録音に向く。" },
+      { "text": "Input Only：Record Enableされたトラックは常に入力音。演奏者が既存テイクではなく自分の音を常に聞きたい場合に使う。" },
+      { "text": "TrackInput Monitor（トラックの『I』ボタン）：Record Enableしていないトラックでも入力音を聞ける。" },
+      { "text": "複数トラックを選択して一括でRecord Enable / Input Monitorを切り替える場合は Option(Alt)+Shift を押しながらクリック（選択トラックに適用）。Option(Alt)クリックは全トラックに適用。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Record Enable（R）/ Input Monitoring（I）/ Auto Input Monitoring",
+      "equivalent": "Logic ProのRecord Enableボタン、Input Monitoringボタン、Record設定の Auto Input Monitoring と役割は近い。",
+      "differences": [
+        "Logic ProのAuto Input Monitoring（録音設定）はPro ToolsのAuto Input Monitoringとほぼ同じ考え方だが、Pro ToolsはInput Onlyモードとの切り替えをセッション全体のモードとして明示的に扱う。",
+        "Pro ToolsではOption(Alt)クリックで全トラック、Option(Alt)+Shiftクリックで選択トラックに一括適用というモディファイア規則が全体で共通している。",
+        "HDX環境ではモニタリングがDSP上で行われるため、ネイティブ環境のLogic Proとはレイテンシーの扱いが異なる。"
+      ],
+      "logicShortcut": "Record Enable: R（トラック選択時のキーコマンド設定による）"
+    },
+    "useCases": [
+      "ドラムの全マイクを一度にRecord Enableし、サウンドチェックでメーターを確認する。",
+      "パンチインで間違えた箇所だけ録り直すとき、Auto Inputにしてパンチ前は既存テイク、パンチ中は生演奏が聞こえるようにする。"
+    ],
+    "cautions": [
+      "Input Onlyのまま再生すると、Record Enableされたトラックの録音済みテイクが聞こえない。プレイバック時の『音が出ない』の原因になりやすい。",
+      "入力が来ていない場合は、マイク→ケーブル→プリアンプ→インターフェース→I/O Setup→トラックのInput の順に経路を確認する。"
+    ],
+    "mistakes": [
+      "Input Onlyモードのまま、プレイバックで録ったテイクが聞こえないと慌てる。",
+      "Option(Alt)クリックで全トラックをRecord Enableしてしまい、不要なトラックに録音してしまう。"
+    ],
+    "keyPoints": [
+      "Auto Input / Input Only の切り替え：Option(Alt) + K",
+      "Option(Alt)クリック=全トラック、Option(Alt)+Shiftクリック=選択トラック",
+      "入力が来ないときは信号経路を音源側から順に確認"
+    ],
+    "terms": [
+      { "term": "Record Enable", "desc": "トラックを録音待機状態にすること。『録音アーム』とも。" },
+      { "term": "Auto Input Monitoring", "desc": "停止中は入力音、再生中は録音済み音、録音中は入力音を自動で切り替えるモード。" },
+      { "term": "Input Only Monitoring", "desc": "Record Enable中のトラックは常に入力音をモニターするモード。" },
+      { "term": "TrackInput Monitor", "desc": "トラック単位で入力音のモニターを強制する機能。" }
+    ],
+    "quiz": [
+      {
+        "q": "録音後、Record Enableしたままプレイバックしたら録った音が聞こえず、マイクの音だけが聞こえる。考えられる原因は？",
+        "choices": ["Auto Input Monitoringになっている", "Input Only Monitoringになっている", "Pre-rollがオフ", "Clip Gainが0dB"],
+        "answer": 1,
+        "explanation": "Input Onlyでは、Record Enable中のトラックは常に入力音をモニターする。Auto Inputに切り替える（Option/Alt + K）か、Record Enableを外す。",
+        "logicNote": "Logic Proでも Input Monitoringボタンがオンだと同様のことが起きる。Pro Toolsではセッション全体のモード設定として確認する。"
+      },
+      {
+        "q": "選択中の複数トラックにだけRecord Enableを一括適用する操作は？",
+        "choices": ["Cmd(Ctrl)クリック", "Option(Alt)クリック", "Option(Alt) + Shift クリック", "ダブルクリック"],
+        "answer": 2,
+        "explanation": "Option(Alt)+Shiftクリックは選択トラックに適用、Option(Alt)クリックは全トラックに適用。この規則はミュート・ソロ・入出力など多くの操作で共通。",
+        "logicNote": "Logic ProではOptionクリックで全トラックに適用など規則が異なる部分があるので注意。"
+      }
+    ],
+    "related": ["l2-monitoring-latency", "l2-punch-preroll"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Recording（Record Enable / Monitoring Modes）" }
+    ],
+    "unverified": ["モニタリングモード切り替えのメニュー位置（TrackメニューかOptionsメニューか）はバージョンにより異なる可能性"]
+  },
+  {
+    "id": "l2-punch-preroll",
+    "level": 2,
+    "order": 2,
+    "title": "Pre-roll / Post-roll と Punch Recording",
+    "titleEn": "Pre/Post-roll & Punch Recording",
+    "category": "recording",
+    "difficulty": 2,
+    "minutes": 20,
+    "prerequisites": ["l2-input-monitoring"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "**Punch Recording** は既存テイクの一部だけを録り直す手法。Pro Toolsでは **タイムライン上の選択範囲がそのまま録音範囲** になるのが基本。**Pre-roll** で選択範囲の手前から再生を始めて演奏者が入りやすくし、**Post-roll** で範囲の後も再生を続ける。再生中に任意のタイミングで録音のオン/オフを切り替える **QuickPunch** もある。",
+    "steps": [
+      { "text": "録り直したい範囲をSelector Toolで選択する（Edit Windowのタイムライン上）。" },
+      { "text": "Pre/Post-rollを有効にする（Transport、またはOptions > Pre/Post-Roll）。長さはTransportの欄で設定（例：2小節、2秒など）。", "shortcut": { "mac": "Cmd + K", "win": "Ctrl + K" } },
+      { "text": "モニタリングをAuto Inputにしておくと、プリロール中は既存テイク、範囲内は入力音が聞こえる。" },
+      { "text": "録音開始。選択範囲内だけが録音される。", "shortcut": { "mac": "Cmd + Space / F12 / テンキー3", "win": "Ctrl + Space / F12 / テンキー3" } },
+      { "text": "QuickPunch：Options > QuickPunch を有効にし、再生中に録音ボタンで録音のオン/オフを切り替える。", "shortcut": { "mac": "Cmd + Shift + P", "win": "Ctrl + Shift + P" } },
+      { "text": "録り直したテイクは元のテイクの上に新しいクリップとして記録される。元の音声ファイルは削除されず残る（必要に応じてPlaylistで管理）。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Autopunch / Punch on the Fly",
+      "equivalent": "Logic ProのAutopunch（ルーラー上のパンチ範囲）とPunch on the Flyに相当。Pro Toolsでは選択範囲＝パンチ範囲、QuickPunch≒Punch on the Fly。",
+      "differences": [
+        "Logic ProはAutopunch専用のロケーター（赤い帯）を設定するが、Pro Toolsはタイムラインの選択範囲をそのまま使う。",
+        "Logic ProのCycle（ループ）範囲とPro Toolsのタイムライン選択は役割が異なる。Pro Toolsでは選択範囲が再生範囲・録音範囲・ループ範囲を兼ねる。",
+        "Pro Toolsには録音済みファイルを直接上書きするDestructive Punch（Ultimate/HDX等の機能）や、TrackPunchもある。"
+      ],
+      "logicShortcut": "Autopunch: Option + Cmd + P（キーコマンド設定により異なる場合あり）"
+    },
+    "useCases": [
+      "ボーカルの2番Aメロの1フレーズだけを録り直す。プリロール2小節で歌い手が前から歌えるようにする。",
+      "ギターソロをQuickPunchで、演奏の流れの中でエンジニアが手動でパンチイン/アウトする。"
+    ],
+    "cautions": [
+      "パンチ範囲の選択が他のトラックにも及んでいないか確認する（Record Enableされていないトラックは録音されないが、意図しないトラックがRecord Enableされていると上書きされる）。",
+      "パンチの境目にはクロスフェードが必要になることが多い。"
+    ],
+    "mistakes": [
+      "Pre-rollがオフのまま録音し、演奏者がいきなり範囲の頭から演奏させられる。",
+      "選択範囲を変えたことに気づかず、意図しない範囲を録音してしまう。"
+    ],
+    "keyPoints": [
+      "選択範囲 = 録音範囲",
+      "Pre/Post-roll切り替え：Cmd(Ctrl) + K",
+      "QuickPunch：Cmd(Ctrl) + Shift + P",
+      "録音開始：Cmd(Ctrl) + Space / F12 / テンキー3"
+    ],
+    "terms": [
+      { "term": "Punch In / Out", "desc": "再生中に録音を開始/終了し、一部だけを録り直すこと。" },
+      { "term": "Pre-roll", "desc": "録音範囲の手前から再生を始める時間。" },
+      { "term": "Post-roll", "desc": "録音範囲の後も再生を続ける時間。" },
+      { "term": "QuickPunch", "desc": "再生中に録音のオン/オフを切り替えられるPro Toolsの機能。" }
+    ],
+    "quiz": [
+      {
+        "q": "Pro Toolsでパンチイン範囲を決める基本的な方法は？",
+        "choices": ["専用のパンチロケーターを設定", "タイムライン上で範囲を選択", "マーカーを2つ置く", "Clip Gainで指定"],
+        "answer": 1,
+        "explanation": "Pro Toolsではタイムラインの選択範囲がそのまま録音範囲になる。",
+        "logicNote": "Logic ProのAutopunchロケーターに相当するものを、Pro Toolsは選択範囲で兼ねる。"
+      },
+      {
+        "q": "Pre/Post-rollのオン/オフを切り替えるショートカット（Windows）は？",
+        "choices": ["Ctrl + K", "Ctrl + P", "Alt + K", "Shift + R"],
+        "answer": 0,
+        "explanation": "Ctrl + K（MacはCmd + K）。Alt(Option) + K はモニタリングモード切り替えなので混同しない。",
+        "logicNote": "Logic ProにはPro ToolsのPre-rollと同じ専用トグルはなく、Count-in（カウントイン）や再生開始位置で代用することが多い。"
+      }
+    ],
+    "related": ["l2-loop-playlist", "l3-fades"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Recording（Punch Recording / QuickPunch / Pre- and Post-Roll）" }
+    ],
+    "unverified": ["Logic ProのAutopunchの既定キーコマンド"]
+  },
+  {
+    "id": "l2-loop-playlist",
+    "level": 2,
+    "order": 3,
+    "title": "Loop RecordingとPlaylistによるテイク管理",
+    "titleEn": "Loop Recording & Playlists",
+    "category": "recording",
+    "difficulty": 3,
+    "minutes": 25,
+    "prerequisites": ["l2-punch-preroll"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "**Playlist** は、同じトラック上に複数の録音・編集状態を保持して切り替える機能で、Pro Toolsのテイク管理の中心。新しいテイクを録るたびに新規Playlistを作る（または複製する）ことで、全テイクを1トラック内に整理できる。**Loop Recording** を使うと選択範囲を繰り返しながら連続でテイクを録音でき、設定により各テイクが自動でPlaylistとして作成される。",
+    "steps": [
+      { "text": "トラック名横のPlaylistセレクター（▼）から New...（空の新規Playlist）または Duplicate...（現在の内容を複製）を選ぶ。" },
+      { "text": "新規Playlistを作成するショートカット（選択トラック）。", "shortcut": { "mac": "Control + \\", "win": "Start(Windowsキー) + \\", "unverified": true } },
+      { "text": "Playlist名は自動的に『トラック名.01』『.02』のように番号が付く。" },
+      { "text": "Loop Recordingを有効にする（Options > Loop Record）。Transportの録音ボタンにループ表示が出る。", "shortcut": { "mac": "Option + L", "win": "Alt + L" } },
+      { "text": "範囲を選択して録音開始。範囲の終わりまで来ると先頭に戻り、次のテイクを連続して録音する。" },
+      { "text": "Preferences > Operation の『Automatically Create New Playlists When Loop Recording』を有効にすると、ループ録音の各テイクが個別のPlaylistとして作られる。無効の場合はテイクはClip Listに並び、Takes List（クリップを Cmd(Ctrl)クリック等）から選べる。" },
+      { "text": "Track Viewを **Playlists** に切り替えると、全Playlistがメインの下にレーンとして並び、比較・コンピングができる（コンピングはLEVEL 3で詳しく扱う）。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Take Folder / Track Alternatives",
+      "equivalent": "ループ録音で複数テイクを溜めて比較する用途はLogic ProのTake Folderに近い。トラック全体の別バージョンを持つという点ではTrack Alternatives（トラック代替）の方がPlaylistに近い。",
+      "differences": [
+        "Logic ProのTake Folderはリージョン単位のフォルダだが、Pro ToolsのPlaylistはトラック全体のタイムラインのバージョン。",
+        "Pro ToolsのPlaylistは録音テイク管理だけでなく、編集前のバックアップ（複製してから編集）にも日常的に使う。",
+        "Logic ProのQuick Swipe Compingに対し、Pro ToolsはPlaylistsビューで範囲を選んでメインPlaylistへコピーする方式。"
+      ],
+      "logicShortcut": "Cycle: C"
+    },
+    "useCases": [
+      "ボーカルのサビを5回ループ録音し、各テイクをPlaylist『Vox.01〜Vox.05』として残す。",
+      "大きな編集をする前に、Playlistを複製して元の状態を残しておく。"
+    ],
+    "cautions": [
+      "Playlistを削除してもオーディオファイル自体は残るが、整理されていないと後で探すのが困難になる。",
+      "エンジニアとテイク番号の呼び方を合わせる（『3番のサビ』がPlaylist .03 を指すように）。テイクシートにメモを残すのもアシスタントの仕事。"
+    ],
+    "mistakes": [
+      "新しいPlaylistを作らずに録音を繰り返し、テイクが重なって管理できなくなる。",
+      "Duplicateと Newを取り違え、空のPlaylistに録音すべきところを既存テイクが載ったまま録音する。"
+    ],
+    "keyPoints": [
+      "Playlist = トラックのタイムラインのバージョン",
+      "Loop Record：Option(Alt) + L",
+      "ループ録音でPlaylistを自動作成する設定はPreferences > Operation",
+      "編集前はPlaylistをDuplicateして保険をかける"
+    ],
+    "terms": [
+      { "term": "Playlist", "desc": "トラック上のクリップ配置の1バージョン。複数を切り替えられる。" },
+      { "term": "Main Playlist", "desc": "現在再生される（表示の一番上の）Playlist。" },
+      { "term": "Loop Recording", "desc": "選択範囲を繰り返して連続で複数テイクを録音する機能。" },
+      { "term": "Take", "desc": "1回分の録音。" }
+    ],
+    "quiz": [
+      {
+        "q": "ループ録音の各テイクを自動的に別Playlistとして作成する設定はどこ？",
+        "choices": ["Playback Engine", "Preferences > Operation", "I/O Setup", "Session Setup"],
+        "answer": 1,
+        "explanation": "Preferences > Operationの『Automatically Create New Playlists When Loop Recording』で設定する。",
+        "logicNote": "Logic ProではCycle録音時にTake Folderが作られるかどうかをRecord設定で選ぶ。考え方は近い。"
+      },
+      {
+        "q": "大きな編集の前に現状を残す方法として最もPro Toolsらしいのは？",
+        "choices": ["トラックを複製してミュートする", "PlaylistをDuplicateする", "Bounceしておく", "Undo履歴に頼る"],
+        "answer": 1,
+        "explanation": "PlaylistをDuplicateして、元のPlaylistを残したまま編集する。いつでも切り替えて戻れる。",
+        "logicNote": "Logic ProのTrack Alternativesで別バージョンを作る運用に相当する。"
+      },
+      {
+        "q": "Logic ProのTake Folderと比べたPlaylistの特徴として正しいのは？",
+        "choices": ["リージョン単位でしか管理できない", "トラック全体のタイムラインのバージョンである", "MIDIトラックでは使えない", "1トラックに2つまでしか作れない"],
+        "answer": 1,
+        "explanation": "Playlistはトラック全体のクリップ配置のバージョン。Take Folderはリージョン単位のテイク集合。",
+        "logicNote": "完全一致ではなく類似概念。Track AlternativesがPlaylistに近い。"
+      }
+    ],
+    "related": ["l3-comping", "l2-punch-preroll"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Playlists / Loop Recording" }
+    ],
+    "unverified": ["新規Playlist作成のショートカット（Control + \\ / Start + \\）", "Preferencesの項目名の正確な英語表記"]
+  },
+  {
+    "id": "l2-overdub-levels",
+    "level": 2,
+    "order": 4,
+    "title": "オーバーダビングと録音レベル管理",
+    "titleEn": "Overdubbing & Recording Levels",
+    "category": "recording",
+    "difficulty": 2,
+    "minutes": 20,
+    "prerequisites": ["l2-input-monitoring"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x（DAW非依存の内容を含む）",
+    "reviewStatus": "draft",
+    "overview": "**オーバーダビング** は、録音済みのトラックを聴きながら別のパートを重ねて録ること。録音レベルは **マイクプリアンプ（外部機器またはインターフェース）のゲインで決まる**。Pro Toolsのフェーダーは録音レベルを変えない（モニターの音量のみ）ことを理解するのが重要。24bit録音ではピークに十分な余裕（ヘッドルーム）を残して録るのが一般的。",
+    "steps": [
+      { "text": "演奏者に実際の演奏で一番大きいパートを演奏してもらい、プリアンプのゲインを調整する。" },
+      { "text": "Pro Toolsのトラックメーターで、ピークがクリップしない（赤くならない）ことを確認。目安として、ピークに数dB〜十数dBの余裕を残すことが多い（スタジオ・エンジニアの方針に従う）。" },
+      { "text": "メーターの種類は Options または メーター表示の右クリック等で変更できる（Sample Peak、VU、K-Systemなど）。" },
+      { "text": "既存トラックを聴かせながら新トラックをRecord Enableして録音。" },
+      { "text": "クリップ表示（赤）が点いた場合はクリックしてクリアし、ゲインを下げて録り直すか判断する。" }
+    ],
+    "logic": {
+      "match": "exact",
+      "logicName": "オーバーダブ / 入力ゲイン調整",
+      "equivalent": "考え方はLogic Proと同じ。録音レベルはプリアンプで決まり、チャンネルフェーダーは録音レベルに影響しない。",
+      "differences": [
+        "Pro Toolsはメーターの種類（ピーク/VU等）をセッション単位で切り替えられる。",
+        "スタジオではコンソールやアウトボードのプリアンプを使うことが多く、ゲイン調整はPro Toolsの外で行う。"
+      ]
+    },
+    "useCases": [
+      "ベーシックトラック（ドラム・ベース）の後に、ギター・ボーカルを順番に重ねる。",
+      "ボーカリストがサビで大きく声を張るため、サビでゲインを決めて全体を録る。"
+    ],
+    "cautions": [
+      "フェーダーを上げても録音レベルは上がらない。小さく録れた場合はプリアンプ側で調整する。",
+      "一度クリップした音は後から元に戻せない。",
+      "大きすぎるゲインはクリップ、小さすぎるゲインはノイズフロアとの差が縮まる。"
+    ],
+    "mistakes": [
+      "Pro Toolsのフェーダーで録音レベルを上げようとする。",
+      "リハーサルの小さな音でゲインを決め、本番でクリップする。"
+    ],
+    "keyPoints": [
+      "録音レベル = プリアンプのゲイン。フェーダーではない",
+      "クリップは修復できない。余裕を持って録る",
+      "一番大きい部分でゲインを決める"
+    ],
+    "terms": [
+      { "term": "Overdub", "desc": "既存の録音を聴きながら別パートを重ねて録音すること。" },
+      { "term": "Headroom", "desc": "最大レベル（0dBFS）までの余裕。" },
+      { "term": "Clipping", "desc": "最大レベルを超えて波形が歪むこと。" },
+      { "term": "dBFS", "desc": "デジタルのフルスケールを0とした音量の単位。" }
+    ],
+    "quiz": [
+      {
+        "q": "ギターの録音レベルが小さい。正しい対処は？",
+        "choices": ["Pro Toolsのトラックフェーダーを上げる", "Master Faderを上げる", "マイクプリアンプのゲインを上げる", "Clip Gainを上げて録音し直す"],
+        "answer": 2,
+        "explanation": "録音レベルはプリアンプのゲインで決まる。フェーダーやMaster Faderはモニター/再生レベルを変えるだけ。",
+        "logicNote": "Logic Proでも同じ。DAWに依存しない原則。"
+      },
+      {
+        "q": "録音中にクリップ表示が出た。正しい認識は？",
+        "choices": ["後でClip Gainを下げれば元に戻る", "クリップした部分は修復できないので、必要なら録り直しを判断する", "32bit floatなら必ず問題ない", "メーターの誤表示なので無視してよい"],
+        "answer": 1,
+        "explanation": "A/D変換の段階でクリップした音は元に戻せない。エンジニアに報告し録り直しを判断する。32-bit floatセッションでも、インターフェースのA/D変換でクリップした音は戻らない。",
+        "logicNote": "Logic Proでも同じ。"
+      }
+    ],
+    "related": ["l2-input-monitoring", "l2-monitoring-latency"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Recording / Metering" },
+      { "title": "一般的なレコーディング実務（DAW非依存）" }
+    ],
+    "unverified": ["メーター種類の切り替えメニューの位置"]
+  },
+  {
+    "id": "l2-monitoring-latency",
+    "level": 2,
+    "order": 5,
+    "title": "レイテンシー管理と録音時のモニタリング",
+    "titleEn": "Latency & Monitoring",
+    "category": "recording",
+    "difficulty": 3,
+    "minutes": 25,
+    "prerequisites": ["l1-playback-engine", "l2-input-monitoring"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "ネイティブ（ホストCPU処理）環境では、入力音をPro Tools経由でモニターするとH/W Buffer Sizeとプラグインの遅延分だけ遅れて聞こえる。対策は (1) バッファを下げる、(2) 遅延の大きいプラグインを外す、(3) **Low Latency Monitoring** を使う、(4) オーディオインターフェースやコンソールのダイレクトモニター（ハードウェアモニタリング）を使う、のいずれか。録音済みトラック間のプラグイン遅延は **Delay Compensation** が補正する。",
+    "steps": [
+      { "text": "Setup > Playback Engine で H/W Buffer Size を確認・低減する。" },
+      { "text": "Record Enableされたトラックや経路上に、遅延の大きいプラグイン（リニアフェイズEQ、ルックアヘッド型リミッター等）がないか確認。" },
+      { "text": "Options > Low Latency Monitoring：Record Enable/TrackInputされたトラックのプラグインをバイパスするなどして入力モニターの遅延を最小化する（ネイティブ環境向けの機能。出力の割り当て条件があるため詳細は公式ガイドで確認）。" },
+      { "text": "Options > Delay Compensation が有効か確認。プラグイン遅延を補正し、トラック間のタイミングを揃える。" },
+      { "text": "ハードウェアモニタリングを使う場合は、Pro Tools側で入力音を二重に聞かないよう、トラックのモニターをミュートするなど調整する。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Low Latency Mode / Plug-in Delay Compensation",
+      "equivalent": "Low Latency Monitoring ≒ Logic ProのLow Latency Mode。Delay Compensation ≒ Logic ProのPlug-in Delay Compensation（Settings > Audio > General）。",
+      "differences": [
+        "Logic ProのLow Latency Modeは設定した上限を超える遅延のプラグインをバイパスする方式。Pro ToolsのLow Latency Monitoringとは条件・挙動が異なる。",
+        "Pro ToolsのDelay Compensationの設定やトラックごとの補正表示はMix Window上で確認できる（Delay Compensation View）。",
+        "HDX環境では入力モニターがDSP上で処理されるため、ネイティブ環境ほどバッファの影響を受けない。"
+      ]
+    },
+    "useCases": [
+      "ミックス途中のセッションで追加ボーカルを録る際、マスターに挿さったルックアヘッド型リミッターが原因で歌い手のモニターが遅れる → プラグインをバイパスまたはLow Latency Monitoringで対処。",
+      "アウトボードのコンプレッサーをHardware Insertで使ったときにタイミングがずれる → H/W Insert Delay と Delay Compensation を確認。"
+    ],
+    "cautions": [
+      "モニターの遅延は演奏のタイミングとパフォーマンスに直接影響する。数ミリ秒でも演奏者は違和感を覚える場合がある。",
+      "Delay Compensationをオフにすると、プラグイン遅延でトラック間のタイミングがずれる。"
+    ],
+    "mistakes": [
+      "マスターバスのプラグインを確認せず、バッファだけ下げて解決しないと悩む。",
+      "ハードウェアモニターとPro Toolsのモニターを同時に聞かせ、音が二重（フランジャー状）になる。"
+    ],
+    "keyPoints": [
+      "モニター遅延 = バッファ + プラグイン遅延",
+      "対処：バッファ低減 / 遅延プラグイン除去 / Low Latency Monitoring / ハードウェアモニター",
+      "Delay Compensationはトラック間の再生タイミングを揃える機能"
+    ],
+    "terms": [
+      { "term": "Low Latency Monitoring", "desc": "ネイティブ環境で入力モニターの遅延を最小化するPro Toolsの機能。" },
+      { "term": "Delay Compensation", "desc": "プラグイン等による遅延を自動補正し、トラック間のタイミングを揃える機能。" },
+      { "term": "Direct Monitoring", "desc": "インターフェースやミキサー内部で入力音を直接モニターに返す方式。DAWの遅延を受けない。" }
+    ],
+    "quiz": [
+      {
+        "q": "ボーカル録音でモニター遅延がある。バッファは64まで下げたが改善しない。次に確認すべきは？",
+        "choices": ["サンプルレート", "経路上（トラック・Master等）の遅延の大きいプラグイン", "Clip Gain", "Edit Mode"],
+        "answer": 1,
+        "explanation": "バッファ以外の遅延要因として、トラックやMaster Faderに挿さったルックアヘッド/リニアフェイズ系プラグインが多い。",
+        "logicNote": "Logic ProでもMasterのリミッターが原因になる典型例は同じ。Logic ProならLow Latency Modeで一時的にバイパスできる。"
+      },
+      {
+        "q": "Delay Compensationの役割として正しいのは？",
+        "choices": ["入力モニターの遅延をゼロにする", "プラグイン遅延を補正して再生トラック間のタイミングを揃える", "サンプルレートを変換する", "録音レベルを自動調整する"],
+        "answer": 1,
+        "explanation": "Delay Compensationは再生時のトラック間のずれを補正する。入力モニターの遅延そのものは消せない。",
+        "logicNote": "Logic ProのPlug-in Delay Compensationと同等の目的。"
+      }
+    ],
+    "related": ["l1-playback-engine", "l2-input-monitoring"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Low Latency Monitoring / Delay Compensation" }
+    ],
+    "unverified": ["Low Latency Monitoringの動作条件（出力割り当て等）の詳細"]
+  }
+]

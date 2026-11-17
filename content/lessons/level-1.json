@@ -1,0 +1,554 @@
+[
+  {
+    "id": "l1-interface",
+    "level": 1,
+    "order": 1,
+    "title": "Pro Toolsの画面構成：Edit WindowとMix Window",
+    "titleEn": "Edit Window & Mix Window",
+    "category": "session",
+    "difficulty": 1,
+    "minutes": 15,
+    "prerequisites": [],
+    "ptVersion": "Pro Tools 2023.x〜2024.x（Studio / Ultimate）",
+    "reviewStatus": "draft",
+    "overview": "Pro Toolsの作業は主に **Edit Window**（時間軸上でクリップを編集する画面）と **Mix Window**（コンソール型のミキサー画面）の2つで行う。Logic Proのように1画面に多くの機能を統合するのではなく、2つのメインウィンドウを行き来するのがPro Toolsの基本スタイル。スタジオではEdit/Mixの切り替えショートカットを無意識に押せることが前提になる。",
+    "steps": [
+      { "text": "Edit WindowとMix Windowを切り替える。", "shortcut": { "mac": "Cmd + =", "win": "Ctrl + =" } },
+      { "text": "Edit Windowの主な領域：上部の **Toolbar**（Edit Mode・Edit Tool・カウンターなど）、左の **Tracks / Groups List**、右の **Clip List**、中央の **Track Playlist** 領域（タイムライン）、上部の **Rulers**（Bars|Beats、Min:Sec、Markersなど）。" },
+      { "text": "Toolbarに表示する項目は View > Edit Window Views で切り替えられる（I/O・Inserts・Sends・Comments など、Edit Window上のトラック左側にも表示可能）。" },
+      { "text": "Mix Windowでは各チャンネルストリップに上から Inserts / Sends / I/O（Input・Output）/ Pan / Fader / Track Name が並ぶ。表示項目は View > Mix Window Views で切り替える。" },
+      { "text": "Transport Window（Window > Transport）を開くと再生・録音・Pre/Post-roll などを操作できる。Edit WindowのToolbarにもTransportを表示可能。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Tracks Area（メインウィンドウ）／ Mixer",
+      "equivalent": "Edit Window ≒ Logic Proのメインウィンドウ（Tracks Area）、Mix Window ≒ Mixer（Xキーで開く画面）。",
+      "differences": [
+        "Logic ProはMixerをメインウィンドウ下部に統合表示できるが、Pro ToolsはEdit/Mixを別ウィンドウとして切り替えて使うのが一般的。",
+        "Logic ProのInspector（左のチャンネルストリップ表示）に相当する固定パネルはない。Edit Window上でInserts/Sends/I/Oを表示する形で代用する。",
+        "Pro Toolsではトラックの表示幅・高さ・表示項目をウィンドウごとに細かく設定する文化がある。"
+      ],
+      "logicShortcut": "Mixer表示: X"
+    },
+    "useCases": [
+      "録音中はMix Windowでメーターと入力を監視し、テイク後すぐEdit Windowで波形を確認する。",
+      "エンジニアから『Mix出して』『Editに戻して』と頻繁に指示される。切り替えを即座に行えることが基本動作。"
+    ],
+    "cautions": [
+      "Edit Window上でInserts/Sendsを表示しておくとMix Windowへ行かなくても作業できるが、表示項目が多いと画面が狭くなる。用途に応じてWindow Configurationを使い分ける。"
+    ],
+    "mistakes": [
+      "Logic Proの感覚でキー1つ（X）でミキサーを開こうとする。",
+      "トラック左側のI/O表示を消してしまい、入力設定がどこにあるか分からなくなる（View > Edit Window Views で再表示）。"
+    ],
+    "keyPoints": [
+      "Edit/Mix の切り替え：Cmd(Ctrl) + =",
+      "表示項目は View メニューの Edit Window Views / Mix Window Views で管理する",
+      "Pro Toolsは『2ウィンドウを行き来する』前提で設計されている"
+    ],
+    "terms": [
+      { "term": "Edit Window", "desc": "タイムライン上でクリップの録音・編集を行うメイン画面。" },
+      { "term": "Mix Window", "desc": "コンソール型のミキサー画面。Inserts・Sends・I/O・Fader を操作する。" },
+      { "term": "Clip List", "desc": "セッション内のオーディオ/MIDIクリップの一覧。Logic ProのProject Audio（オーディオファイル一覧）に近い。" },
+      { "term": "Ruler", "desc": "タイムラインの上部に表示される時間軸・マーカー・テンポなどの帯。" }
+    ],
+    "quiz": [
+      {
+        "q": "Edit WindowとMix Windowを切り替えるショートカット（Mac）は？",
+        "choices": ["Cmd + M", "Cmd + =", "X", "Option + Space"],
+        "answer": 1,
+        "explanation": "Cmd + =（WindowsはCtrl + =）でEdit/Mixを切り替える。現場で最も頻繁に使うショートカットのひとつ。",
+        "logicNote": "Logic ProではXキーでMixerを開くが、Pro Toolsでは1キーではなくCmd(Ctrl) + = を使う。"
+      },
+      {
+        "q": "Mix Windowのチャンネルストリップに表示する項目（Inserts、Sendsなど）を切り替えるメニューは？",
+        "choices": ["Setup > Preferences", "View > Mix Window Views", "Track > Track Options", "Window > Workspace"],
+        "answer": 1,
+        "explanation": "View > Mix Window Views（Edit WindowならView > Edit Window Views）で表示項目を選ぶ。",
+        "logicNote": "Logic ProではMixerの表示項目はMixerウィンドウのView/Optionsメニュー等で設定する。考え方は同じだが場所が異なる。"
+      }
+    ],
+    "related": ["l1-tracks", "l1-session-create"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Edit Window / Mix Window の章" }
+    ],
+    "unverified": []
+  },
+  {
+    "id": "l1-session-create",
+    "level": 1,
+    "order": 2,
+    "title": "Sessionの作成とサンプルレート・ビットデプス",
+    "titleEn": "Creating a Session / Sample Rate & Bit Depth",
+    "category": "session",
+    "difficulty": 1,
+    "minutes": 20,
+    "prerequisites": ["l1-interface"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "Pro Toolsのプロジェクトは **Session** と呼ばれ、拡張子 **.ptx** のセッションファイルと、Audio Files などのサブフォルダを持つ **Sessionフォルダ** で構成される。セッション作成時に **サンプルレート・ビットデプス・ファイル形式** を決める。特にサンプルレートは作成後に通常の操作では変更できない（変更するには Save Copy In で別仕様のコピーを作る）ため、作成時の確認が非常に重要。",
+    "steps": [
+      { "text": "File > Create New...（起動時のDashboardでも可）を開く。", "shortcut": { "mac": "Cmd + N", "win": "Ctrl + N" } },
+      { "text": "セッション名を入力し、保存場所を指定する。スタジオでは録音用ドライブ（システムドライブ以外）を選ぶのが基本。" },
+      { "text": "**File Type**：通常は BWF (.wav)。AIFFも選べるが、他スタジオとの受け渡しではWAVが一般的。" },
+      { "text": "**Sample Rate**：44.1kHz / 48kHz / 88.2kHz / 96kHz など。映像系は48kHz、音楽では44.1kHzまたは48kHz以上がよく使われる。案件の指定に従う。" },
+      { "text": "**Bit Depth**：16 / 24 / 32-bit Float。録音は24bitが標準的。32-bit floatも選択可能。" },
+      { "text": "**I/O Settings**：Last Used、Stereo Mix など。スタジオ固有のI/O設定ファイルがある場合はそれを選ぶ。" },
+      { "text": "作成されたSessionフォルダ内を確認する：.ptxファイル、Audio Files、Session File Backups、Bounced Files、Clip Groups、Video Files などのフォルダが作られる（作成されるフォルダはバージョン・使用状況により異なる場合がある）。" },
+      { "text": "保存。こまめな保存はアシスタントの基本動作。", "shortcut": { "mac": "Cmd + S", "win": "Ctrl + S" } }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Project（プロジェクト）",
+      "equivalent": "Pro ToolsのSession ≒ Logic ProのProject。セッションファイル(.ptx) ＋ 素材フォルダという構成は、Logic Proの『フォルダとして保存したプロジェクト』に近い。",
+      "differences": [
+        "Logic ProはFile > Project Settings > Audio でサンプルレートを後から変更できるが、Pro Toolsはセッション作成後にサンプルレートを直接変更できない。変更が必要な場合は File > Save Copy In で新しいサンプルレートを指定してコピーを作る。",
+        "Pro Toolsはセッション作成時にファイル形式（WAV/AIFF）とビットデプスを明示的に指定する。",
+        "Logic Proのパッケージ形式（.logicx 1ファイル）のような構造はなく、常にフォルダ構造が見える。"
+      ]
+    },
+    "useCases": [
+      "クライアントから『48k/24bitでお願いします』と指定され、その仕様でセッションを立ち上げる。",
+      "他スタジオから受け取ったセッションの仕様（Session > Session Setup などで確認）を、自スタジオの機材のサンプルレートと合わせる。"
+    ],
+    "cautions": [
+      "オーディオインターフェースやクロックマスター（外部クロック）とセッションのサンプルレートが一致しているかを必ず確認する。",
+      "システムドライブ（OSが入っているドライブ）への録音は推奨されない。専用の録音ドライブを使う。",
+      "Session File Backups（自動バックアップ）の設定は Preferences > Operation の Auto Backup で確認できる。"
+    ],
+    "mistakes": [
+      "サンプルレートを確認せずに作成し、録音後に指定と違っていたことに気づく。",
+      "セッションフォルダの外に素材が散らばり、他スタジオへ渡したときにファイルが見つからない（Missing Files）。",
+      "Save As と Save Copy In の違いを理解せずに使う（Save Copy In は素材ファイルのコピーやサンプルレート変更を伴う受け渡し用）。"
+    ],
+    "keyPoints": [
+      "Session = .ptxファイル + セッションフォルダ",
+      "サンプルレートは作成後に直接変更できない → 作成時に必ず確認",
+      "録音は専用ドライブへ。BWF(.wav) / 24bit が一般的な出発点"
+    ],
+    "terms": [
+      { "term": "Session", "desc": "Pro Toolsのプロジェクト単位。.ptxファイルとセッションフォルダで構成。" },
+      { "term": "BWF (Broadcast Wave Format)", "desc": "タイムスタンプなどのメタデータを持てるWAV形式。Pro Toolsの標準的な録音形式。" },
+      { "term": "Sample Rate", "desc": "1秒間あたりのサンプル数。44.1kHz、48kHz、96kHzなど。" },
+      { "term": "Bit Depth", "desc": "1サンプルあたりの量子化ビット数。ダイナミックレンジに関わる。" },
+      { "term": "Save Copy In", "desc": "セッションのコピーを、ファイル形式・サンプルレート・素材ファイルのコピーの有無などを指定して保存する機能。" }
+    ],
+    "quiz": [
+      {
+        "q": "Pro Toolsで既存セッションを別のサンプルレートにしたい。正しい方法は？",
+        "choices": ["Session Setupでサンプルレートを変更する", "Playback Engineでサンプルレートを変更する", "File > Save Copy In で新しいサンプルレートを指定してコピーを作る", "Preferencesで変更する"],
+        "answer": 2,
+        "explanation": "Pro Toolsのセッションのサンプルレートは作成後に直接変更できない。Save Copy In でオーディオファイルをコピー（変換）した新しいセッションを作る。",
+        "logicNote": "Logic ProではProject Settingsからサンプルレートを変更できるため、同じ感覚で探すと見つからない。"
+      },
+      {
+        "q": "スタジオでのセッション保存先として最も適切なのは？",
+        "choices": ["OSの入ったシステムドライブのデスクトップ", "専用の録音用ドライブ", "クラウド同期フォルダ", "USBメモリ"],
+        "answer": 1,
+        "explanation": "録音・再生のパフォーマンスと安全性のため、システムドライブではなく専用の録音ドライブを使うのが基本。",
+        "logicNote": "Logic Proでも同様の考え方だが、Pro Toolsのスタジオ運用ではより厳格に守られる。"
+      },
+      {
+        "q": "BWF (.wav) について正しいものは？",
+        "choices": ["MP3の一種である", "タイムスタンプ等のメタデータを持てるWAV形式", "Pro Tools専用の非公開形式", "MIDIデータの形式"],
+        "answer": 1,
+        "explanation": "BWFはメタデータ（オリジナルのタイムスタンプなど）を格納できるWAV。他DAWでも読み込める。",
+        "logicNote": "Logic ProもBWFのタイムスタンプを利用してリージョンを元の位置に配置できる。"
+      }
+    ],
+    "related": ["l1-playback-engine", "l1-session-management"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Sessions and Tracks（セッションの作成）" },
+      { "title": "Avid Pro Tools Reference Guide", "section": "Save Copy In" }
+    ],
+    "unverified": ["作成されるサブフォルダの種類（バージョンや機能の使用状況により異なる可能性）"]
+  },
+  {
+    "id": "l1-playback-engine",
+    "level": 1,
+    "order": 3,
+    "title": "Playback EngineとH/W Buffer Size",
+    "titleEn": "Playback Engine",
+    "category": "session",
+    "difficulty": 2,
+    "minutes": 15,
+    "prerequisites": ["l1-session-create"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "**Playback Engine**（Setup > Playback Engine）は、Pro Toolsが使用するオーディオインターフェース（デバイス）と、**H/W Buffer Size**（ハードウェアバッファサイズ）などの処理設定を決める画面。録音時はバッファを小さくしてレイテンシーを下げ、ミックス時は大きくしてプラグイン処理に余裕を持たせる、という切り替えが基本。",
+    "steps": [
+      { "text": "Setup > Playback Engine を開く。" },
+      { "text": "**Playback Engine**（デバイス選択）で使用するオーディオインターフェースを選ぶ。変更するとセッションの保存・再起動が求められる場合がある。" },
+      { "text": "**H/W Buffer Size**：録音時は64〜128 samples程度、ミックス時は512〜1024 samples以上にすることが多い（具体的な値はシステム性能による）。" },
+      { "text": "その他の項目（Host Engine関連の設定、Ignore Errors During Playback/Record など）は、エラー発生時の挙動に関わる。内容を理解してから変更する。" },
+      { "text": "変更後、再生・録音でエラーやノイズが出ないか確認する。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Settings > Audio > Devices",
+      "equivalent": "Logic Proの Settings（環境設定）> Audio > Devices で出力/入力デバイスとI/O Buffer Sizeを設定するのとほぼ同じ役割。",
+      "differences": [
+        "Logic Proは入力デバイスと出力デバイスを個別に選べるが、Pro ToolsのPlayback Engineは基本的に1つのデバイス（またはアグリゲートデバイス）を選択する。",
+        "Pro Toolsではエラー時の挙動（エラーで停止するか）なども同じ画面で設定する。",
+        "Logic Proの Low Latency Mode に近い機能として、Pro Tools（ネイティブ環境）には Options > Low Latency Monitoring がある（LEVEL 2で扱う）。"
+      ],
+      "logicShortcut": "Logic Pro > Settings > Audio"
+    },
+    "useCases": [
+      "ボーカル録音前に『バッファ下げて』と言われ、H/W Buffer Sizeを64または128に変更する。",
+      "ミックス作業でCPUエラーが出たため、バッファを1024に上げる。"
+    ],
+    "cautions": [
+      "再生中・録音中にバッファを変更しない。必ず停止してから変更する。",
+      "HDXシステムとネイティブシステムではレイテンシーの考え方が異なる（HDXはDSP上でのミキシング）。"
+    ],
+    "mistakes": [
+      "ミックス用の大きいバッファのまま録音を始め、演奏者がモニターの遅れを訴える。",
+      "Playback Engineでデバイスを誤って内蔵オーディオにしてしまい、スタジオのインターフェースから音が出ない。"
+    ],
+    "keyPoints": [
+      "Setup > Playback Engine でデバイスとバッファを設定",
+      "録音時は小さいバッファ、ミックス時は大きいバッファ",
+      "変更は停止中に行う"
+    ],
+    "terms": [
+      { "term": "H/W Buffer Size", "desc": "オーディオ処理を一度に行うサンプル数。小さいほど低レイテンシーだがCPU負荷が高い。" },
+      { "term": "Latency（レイテンシー）", "desc": "入力から出力（モニター）までの遅延時間。" },
+      { "term": "HDX", "desc": "AvidのDSPベースのPro Toolsハードウェア。DSP上でミキシング・プラグイン処理を行い低レイテンシーを実現。" }
+    ],
+    "quiz": [
+      {
+        "q": "ボーカル録音中、歌い手がヘッドフォンの声が遅れて聞こえると言っている。Playback Engineでまず確認すべき項目は？",
+        "choices": ["Sample Rate", "H/W Buffer Size", "File Type", "Bit Depth"],
+        "answer": 1,
+        "explanation": "ネイティブ環境でのモニター遅延は主にH/W Buffer Sizeに起因する。録音時は小さくする。ただしレイテンシーの大きいプラグインがトラックに挿さっていないかも確認する。",
+        "logicNote": "Logic ProのI/O Buffer Sizeに相当。Logic ProのLow Latency Modeのような機能もPro ToolsにはLow Latency Monitoringとして存在する。"
+      },
+      {
+        "q": "H/W Buffer Sizeを変更するタイミングとして適切なのは？",
+        "choices": ["録音中", "再生中", "トランスポート停止中", "いつでもよい"],
+        "answer": 2,
+        "explanation": "バッファの変更は停止中に行う。",
+        "logicNote": "Logic Proでも同様。"
+      }
+    ],
+    "related": ["l1-io-setup", "l2-monitoring-latency"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Playback Engine" }
+    ],
+    "unverified": ["Playback Engineダイアログに表示される詳細項目の名称・配置はバージョンにより異なる可能性"]
+  },
+  {
+    "id": "l1-io-setup",
+    "level": 1,
+    "order": 4,
+    "title": "I/O Setup：入出力とBusの名前を管理する",
+    "titleEn": "I/O Setup",
+    "category": "routing",
+    "difficulty": 2,
+    "minutes": 20,
+    "prerequisites": ["l1-playback-engine"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "**I/O Setup**（Setup > I/O）は、オーディオインターフェースの物理入出力（Input / Output）、内部の **Bus**、ハードウェアインサート（Insert）などに名前を付け、Pro Tools上での使い方を定義する画面。スタジオでは『Mic Pre 1〜8』『Cue A』のように実際の機材に合わせた名前を付けたI/O設定ファイルを用意しておき、セッション作成時に読み込むことが多い。",
+    "steps": [
+      { "text": "Setup > I/O を開く。" },
+      { "text": "**Input** タブ：インターフェースの物理入力をPro Toolsの入力パスとして定義。ステレオ/モノのパスとサブパスを作成・命名できる。" },
+      { "text": "**Output** タブ：物理出力（モニター出力、Cue用出力など）を定義。" },
+      { "text": "**Bus** タブ：内部Busを定義。Pro ToolsではBusもここで命名・管理する。" },
+      { "text": "**Insert** タブ：外部エフェクト（アウトボード）をハードウェアインサートとして使うためのパスを定義。" },
+      { "text": "**H/W Insert Delay** タブ：ハードウェアインサート使用時の遅延補正値を設定。" },
+      { "text": "Export Settings / Import Settings で、I/O設定を .pio ファイルとして保存・読み込みできる。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "I/O Labels / Bus",
+      "equivalent": "Logic Proの Mix > I/O Labels（入出力に名前を付ける機能）に近いが、Pro ToolsのI/O Setupはパスの定義（どのチャンネルをステレオペアにするか等）まで含む、より包括的な設定画面。",
+      "differences": [
+        "Logic ProではBusは番号で用意されており自動的に使えるが、Pro ToolsではBusはI/O Setupで定義・命名される（トラックの出力選択時に新規作成することも可能）。",
+        "Pro ToolsのI/O設定はファイルとして保存・共有でき、スタジオ標準の設定を配布する運用が一般的。",
+        "ハードウェアインサートの遅延補正もI/O Setupで管理する。Logic ProではI/O Pluginで遅延を検出する。"
+      ],
+      "logicShortcut": "Mix > I/O Labels"
+    },
+    "useCases": [
+      "スタジオのコンソールやマイクプリの番号とPro Toolsの入力名を一致させ、『Kick In は Input 1』のように即座に分かるようにする。",
+      "他スタジオから持ち込まれたセッションの出力がスタジオの設定と合わず音が出ないとき、I/O Setupで出力パスを再割り当てする。"
+    ],
+    "cautions": [
+      "I/O Setupを不用意に変更すると、既存トラックの入出力割り当てが無効（イタリック表示など）になる場合がある。",
+      "スタジオ標準のI/O設定を勝手に上書きしない。変更前にExportでバックアップを取る。"
+    ],
+    "mistakes": [
+      "持ち込みセッションで出力パスが非アクティブになり、音が出ない原因が分からない。",
+      "Bus名を付けずに『Bus 1-2』のまま使い、後で何のBusか分からなくなる。"
+    ],
+    "keyPoints": [
+      "Setup > I/O で Input / Output / Bus / Insert を定義・命名",
+      "I/O設定は書き出して共有できる",
+      "持ち込みセッションで音が出ないときはI/O Setupと出力割り当てを疑う"
+    ],
+    "terms": [
+      { "term": "Path", "desc": "Pro Tools内での信号の経路の単位。Main Path（例：ステレオ）とSub Path（例：その中のモノ）がある。" },
+      { "term": "Bus", "desc": "Pro Tools内部で信号を送るための経路。Aux Inputへの送りなどに使う。" },
+      { "term": "Hardware Insert", "desc": "インターフェースの入出力を使って外部機器（アウトボード）をインサートとして使う機能。" }
+    ],
+    "quiz": [
+      {
+        "q": "Pro ToolsでBusに名前を付けて管理する場所は？",
+        "choices": ["Mix Windowのフェーダー", "Setup > I/O の Bus タブ", "Preferences > Mixing", "Track > New"],
+        "answer": 1,
+        "explanation": "BusはI/O SetupのBusタブで定義・命名する。トラックの入出力セレクターから新規Busを作成することもできる。",
+        "logicNote": "Logic ProのBusは番号で最初から用意されているが、Pro Toolsでは名前付きのパスとして管理する。"
+      },
+      {
+        "q": "持ち込みセッションを開いたら全トラックの出力がイタリック表示で音が出ない。まず確認すべき場所は？",
+        "choices": ["Playback EngineのBuffer Size", "I/O Setup の Output 設定と各トラックの出力割り当て", "Clip Gain", "Edit Mode"],
+        "answer": 1,
+        "explanation": "セッションが作られた環境と現在のI/O設定が異なると、出力パスが無効になる。I/O Setupで出力を定義し、トラックの出力を再割り当てする。",
+        "logicNote": "Logic Proではプロジェクトの出力が自動的に現在のデバイスに割り当てられることが多いため、Pro Toolsの方がI/Oの不一致を意識する必要がある。"
+      }
+    ],
+    "related": ["l1-tracks", "l2-input-monitoring"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "I/O Setup" }
+    ],
+    "unverified": ["無効パスの表示形式（イタリック表示など）の詳細はバージョンにより異なる可能性"]
+  },
+  {
+    "id": "l1-tracks",
+    "level": 1,
+    "order": 5,
+    "title": "トラックの種類：Audio / Aux Input / Master Fader / MIDI / Instrument",
+    "titleEn": "Track Types",
+    "category": "session",
+    "difficulty": 1,
+    "minutes": 20,
+    "prerequisites": ["l1-interface"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "Pro Toolsのトラックは用途ごとに種類が明確に分かれている。主なものは **Audio Track**、**Aux Input**、**Master Fader**、**MIDI Track**、**Instrument Track**、**VCA Master**、**Folder Track**（Routing Folder / Basic Folder）。Track > New で種類・チャンネル形式（Mono / Stereo など）・タイムベース（Samples / Ticks）・本数を指定してまとめて作成できる。",
+    "steps": [
+      { "text": "Track > New... を開く。", "shortcut": { "mac": "Cmd + Shift + N", "win": "Ctrl + Shift + N" } },
+      { "text": "作成本数・チャンネル形式（Mono / Stereo 等）・トラックの種類・タイムベース・名前を指定。『+』ボタンで複数種類を一度に作成できる。" },
+      { "text": "**Audio Track**：オーディオを録音・再生するトラック。" },
+      { "text": "**Aux Input**：Busや物理入力からの信号を受けるトラック。リバーブリターン、サブグループ、外部音源のモニターなどに使う。クリップは置けない。" },
+      { "text": "**Master Fader**：出力パス（例：メイン出力）全体のレベルを制御する。Master Faderのインサートはポストフェーダー。" },
+      { "text": "**MIDI Track**：MIDIデータのみを扱い、外部MIDI機器や別トラックのインストゥルメントへ送る。" },
+      { "text": "**Instrument Track**：MIDIデータとソフト音源（インサートした仮想インストゥルメント）を1トラックにまとめたもの。" },
+      { "text": "トラック名はダブルクリックで変更。スタジオでは録音前に必ず命名する（ファイル名がトラック名から作られるため）。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Audio / Software Instrument / External MIDI / Aux / Stereo Out(Output)",
+      "equivalent": "Audio Track ≒ Audioトラック、Instrument Track ≒ Software Instrumentトラック、MIDI Track ≒ External MIDIトラック、Aux Input ≒ Auxチャンネルストリップ、Master Fader ≒ Stereo Out（Output）チャンネルストリップ。",
+      "differences": [
+        "Logic ProではSendやBusを使うとAuxが自動作成されるが、Pro ToolsではAux Inputを明示的に作成するのが基本（新しめのバージョンではSend作成時に新規トラックを作る機能もある）。",
+        "Pro ToolsのMaster Faderは、作成しなければ存在しない。Logic ProのStereo Outのように常にあるわけではない。",
+        "Pro ToolsのMaster Faderのインサートはポストフェーダー（フェーダーの後）。Logic ProのStereo Outのインサートはプリフェーダー。",
+        "録音されるオーディオファイル名はトラック名を基に作られる。録音前の命名がLogic Pro以上に重要。"
+      ],
+      "logicShortcut": "New Tracks: Option + Cmd + N"
+    },
+    "useCases": [
+      "バンド録音前に、Kick In / Kick Out / Snare Top / ... のように全トラックをまとめて作成・命名する。",
+      "リバーブ用にStereo Aux Inputを作り、入力をBus（例：Verb）に設定する。"
+    ],
+    "cautions": [
+      "Mono / Stereoは作成後に直接変更できないため、作成時に正しく選ぶ。",
+      "トラック数の上限はPro Toolsのエディション（Artist / Studio / Ultimate）によって異なる。"
+    ],
+    "mistakes": [
+      "トラック名が『Audio 1』のまま録音し、ファイル名がAudio 1_01.wav のようになって後で整理できない。",
+      "Master Faderを作らずにミックスし、全体レベルの管理やマスターへのプラグイン挿入ができない。",
+      "ステレオ素材をMonoトラックに、モノのマイクをStereoトラックに作成してしまう。"
+    ],
+    "keyPoints": [
+      "Track > New（Cmd/Ctrl + Shift + N）で種類・形式・本数をまとめて作成",
+      "Aux Input はクリップを持たない『信号の受け口』",
+      "Master Faderは自分で作る。インサートはポストフェーダー",
+      "録音前にトラック名を付ける"
+    ],
+    "terms": [
+      { "term": "Aux Input", "desc": "Busや入力の信号を受けて処理・出力するトラック。" },
+      { "term": "Master Fader", "desc": "出力パス全体のレベルを制御するトラック。" },
+      { "term": "Instrument Track", "desc": "MIDIとソフト音源を1本にまとめたトラック。" },
+      { "term": "Timebase", "desc": "トラックの時間基準。Samples（絶対時間）とTicks（小節拍）がある。" }
+    ],
+    "quiz": [
+      {
+        "q": "Pro ToolsのMaster Faderについて正しいものは？",
+        "choices": ["新規セッションに必ず存在する", "インサートはポストフェーダーである", "オーディオを録音できる", "Sendを持つ"],
+        "answer": 1,
+        "explanation": "Master Faderは作成しなければ存在せず、インサートはフェーダーの後段（ポストフェーダー）で処理される。",
+        "logicNote": "Logic ProのStereo Outのインサートはプリフェーダー。マスターでフェードアウトするとリミッターへの入力が変わるため、動作の違いを理解しておく。"
+      },
+      {
+        "q": "リバーブリターン用に作成するトラックは？",
+        "choices": ["Audio Track", "Aux Input", "MIDI Track", "Master Fader"],
+        "answer": 1,
+        "explanation": "Sendで送ったBusの信号をAux Inputで受け、リバーブをインサートする。",
+        "logicNote": "Logic ProのAuxチャンネルストリップに相当。Logic ProはSend作成時にAuxを自動生成するが、Pro Toolsは自分で作るのが基本。"
+      },
+      {
+        "q": "録音前にトラック名を付けるべき最大の理由は？",
+        "choices": ["見た目を整えるため", "録音ファイル名がトラック名から作られるため", "CPU負荷が下がるため", "Playlistが作れなくなるため"],
+        "answer": 1,
+        "explanation": "録音されたファイル・クリップ名はトラック名を基に作られる。命名されていないと後のファイル管理が困難になる。",
+        "logicNote": "Logic Proでもトラック名がファイル名に使われるが、Pro Toolsでは他スタジオへの受け渡しが前提のことが多く、より厳格に扱う。"
+      }
+    ],
+    "related": ["l1-io-setup", "l1-interface"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Sessions and Tracks（トラックの種類）" }
+    ],
+    "unverified": []
+  },
+  {
+    "id": "l1-import",
+    "level": 1,
+    "order": 6,
+    "title": "Audio ImportとImport Session Data",
+    "titleEn": "Importing Audio & Session Data",
+    "category": "session",
+    "difficulty": 2,
+    "minutes": 15,
+    "prerequisites": ["l1-session-create", "l1-tracks"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "外部のオーディオファイルは File > Import > Audio で読み込む。読み込み時、セッションと形式・サンプルレートが異なるファイルは **Convert**（変換してコピー）、一致するファイルは **Add**（参照）または **Copy** を選べる。他のセッションのトラック・設定を取り込むには **Import Session Data** を使う。",
+    "steps": [
+      { "text": "File > Import > Audio...", "shortcut": { "mac": "Cmd + Shift + I", "win": "Ctrl + Shift + I" } },
+      { "text": "ファイルを選び、Add（参照のまま）/ Copy（セッションのAudio Filesへコピー）/ Convert（変換してコピー）を選択。受け渡しを考えるとセッションフォルダ内にコピーしておくのが安全。" },
+      { "text": "サンプルレートが異なるファイルは変換が必要。変換せずに使うとピッチと速度が変わって再生される。" },
+      { "text": "読み込み先として New Track / Clip List を選ぶ。New Trackの場合、配置位置（Session Start、Song Start、Selection、Spot）を指定。" },
+      { "text": "Edit WindowやWorkspace/Finder(Explorer)からドラッグ＆ドロップでも読み込める。" },
+      { "text": "他セッションからトラックを取り込む：File > Import > Session Data...", "shortcut": { "mac": "Option + Shift + I", "win": "Alt + Shift + I", "unverified": true } }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "File > Import > Audio File / All Files Browser / Import from Project",
+      "equivalent": "Audio Import ≒ Logic Proのオーディオファイル読み込み。Import Session Data ≒ Logic ProのAll Files BrowserからのImport（他プロジェクトのトラック・チャンネルストリップ設定の読み込み）。",
+      "differences": [
+        "Logic Proは読み込み時にサンプルレート変換を自動で行う設定が多いが、Pro Toolsでは変換・コピーの有無を自分で選ぶ。",
+        "Pro ToolsのImport Session Dataでは、どのトラックをどの内容（クリップのみ・設定のみ・Playlist等）で取り込むかを細かく選べる。"
+      ]
+    },
+    "useCases": [
+      "クライアントが持ってきたリファレンス音源やガイドトラックを読み込む。",
+      "以前のセッションからドラムのトラック設定（プラグイン・ルーティング）だけを取り込む。"
+    ],
+    "cautions": [
+      "Addで参照のまま読み込むと、元ファイルがセッションフォルダ外に残り、受け渡し時にMissing Filesになる。",
+      "MP3などの圧縮ファイルは変換して読み込まれる。"
+    ],
+    "mistakes": [
+      "サンプルレートの異なるファイルを変換せずに使い、テンポとピッチがずれた状態で再生してしまう。",
+      "USBメモリ上のファイルを参照（Add）したまま作業し、USBを抜いて素材が見つからなくなる。"
+    ],
+    "keyPoints": [
+      "Import Audio：Cmd(Ctrl) + Shift + I",
+      "受け渡しを考えて、素材はセッションフォルダ内にコピー",
+      "サンプルレートが違うファイルは必ず変換"
+    ],
+    "terms": [
+      { "term": "Import Session Data", "desc": "他セッションのトラックや設定を現在のセッションに取り込む機能。" },
+      { "term": "Missing Files", "desc": "セッションが参照しているファイルが見つからない状態。" },
+      { "term": "Workspace", "desc": "Pro Tools内のファイルブラウザ。ファイルの検索・試聴・読み込みができる。" }
+    ],
+    "quiz": [
+      {
+        "q": "セッションと異なるサンプルレートのファイルを変換せずに使うとどうなる？",
+        "choices": ["自動的に正しく再生される", "ピッチと速度が変わって再生される", "読み込めない", "音量だけが変わる"],
+        "answer": 1,
+        "explanation": "サンプルレートが異なるまま再生すると、ピッチと再生速度がずれる。読み込み時に変換する。",
+        "logicNote": "Logic Proは自動変換を行う設定が一般的なため、Pro Toolsの方が意識的な判断が必要。"
+      },
+      {
+        "q": "他セッションのトラック設定（プラグインやルーティング）だけを取り込みたい。使う機能は？",
+        "choices": ["Import Audio", "Import Session Data", "Bounce", "Save Copy In"],
+        "answer": 1,
+        "explanation": "Import Session Dataで取り込むトラックと内容を選択できる。",
+        "logicNote": "Logic ProのAll Files Browser > Projectからのインポートに近い。"
+      }
+    ],
+    "related": ["l1-session-management", "l1-session-create"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Importing Audio / Importing Session Data" }
+    ],
+    "unverified": ["Import Session Data のショートカット（Option/Alt + Shift + I）", "Import Audio ダイアログのボタン名称（Add / Copy / Convert）の表記はバージョンにより異なる可能性"]
+  },
+  {
+    "id": "l1-session-management",
+    "level": 1,
+    "order": 7,
+    "title": "Session管理：保存・バックアップ・Save As / Save Copy In",
+    "titleEn": "Session Management",
+    "category": "delivery",
+    "difficulty": 2,
+    "minutes": 15,
+    "prerequisites": ["l1-session-create", "l1-import"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "スタジオでは1つの曲に対して何度もセッションを保存し直し、作業段階ごとにファイルを分けて残す。Pro Toolsには **Save**、**Save As**、**Save Copy In**、**Save As Template** があり、目的が異なる。また **Auto Backup** による Session File Backups フォルダへの自動バックアップも重要。",
+    "steps": [
+      { "text": "Save：現在のセッションを上書き保存。", "shortcut": { "mac": "Cmd + S", "win": "Ctrl + S" } },
+      { "text": "Save As：別名でセッションファイル(.ptx)を保存し、以降はそちらで作業する。素材ファイルはコピーされず、同じAudio Filesを参照する。" },
+      { "text": "Save Copy In：セッションのコピーを別の場所に保存。ファイル形式・サンプルレート・ビットデプスの変更や、オーディオファイル等のコピーを含めるかを選べる。他スタジオへの受け渡しやアーカイブで使う。" },
+      { "text": "Save As Template：トラック構成やI/O設定をテンプレートとして保存（LEVEL 5で詳しく扱う）。" },
+      { "text": "Preferences > Operation の Auto Backup 設定を確認（バックアップの数・間隔）。" },
+      { "text": "命名ルールの例：『曲名_工程_日付_番号』（例：SongA_Rec_20261114_01.ptx）。スタジオのルールがあればそれに従う。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Save / Save As / Save a Copy As / Project Alternatives",
+      "equivalent": "Save As ≒ Logic ProのSave As、Save Copy In ≒ Save a Copy As（素材のコピーを含めた保存）。Logic ProのProject Alternatives（同一プロジェクト内の別バージョン）は、Pro Toolsでは別名の.ptxを同じフォルダに保存する運用に近い。",
+      "differences": [
+        "Pro ToolsのSave Copy Inでは、サンプルレート・ビットデプス・ファイル形式の変換も同時に行える。",
+        "Pro Toolsでは1つのセッションフォルダ内に複数の.ptxを並べて管理するのが一般的（例：Rec用、Edit用、Mix用）。"
+      ]
+    },
+    "useCases": [
+      "録音日の終わりに『SongA_Rec_Day1』としてSave Asし、翌日は『Day2』で作業する。",
+      "ミックスエンジニアに渡すため、Save Copy Inで必要なオーディオファイルだけを含めたセッションを作る。"
+    ],
+    "cautions": [
+      "Save Asは素材ファイルをコピーしない。フォルダごと別ドライブへ移す必要がある場合はSave Copy Inを使う。",
+      "Auto Backupが有効か、実際に保存されているかを定期的に確認する。"
+    ],
+    "mistakes": [
+      "Save As で新しい場所に保存し、素材もコピーされたと思い込む。",
+      "上書き保存し続けて、前の状態に戻れなくなる。"
+    ],
+    "keyPoints": [
+      "Save As：.ptxだけ別名に（素材は共有）",
+      "Save Copy In：素材や仕様変更を含めたコピー（受け渡し・アーカイブ用）",
+      "段階ごとに別名保存して戻れるようにする"
+    ],
+    "terms": [
+      { "term": "Session File Backups", "desc": "Auto Backupによりセッションファイルのバックアップが保存されるフォルダ。" },
+      { "term": "Template", "desc": "トラック構成や設定を再利用するためのひな形。" }
+    ],
+    "quiz": [
+      {
+        "q": "他スタジオへ受け渡すため、必要なオーディオファイルも含めてセッションを別ドライブに複製したい。適切な機能は？",
+        "choices": ["Save", "Save As", "Save Copy In", "Bounce Mix"],
+        "answer": 2,
+        "explanation": "Save Copy Inでオーディオファイルなどのコピーを含めて保存できる。Save Asは.ptxファイルのみが別名になる。",
+        "logicNote": "Logic ProのSave a Copy As（Copy files into project）に相当。"
+      },
+      {
+        "q": "Save As を実行したとき、オーディオファイルはどうなる？",
+        "choices": ["新しい場所にコピーされる", "コピーされず同じファイルを参照する", "削除される", "変換される"],
+        "answer": 1,
+        "explanation": "Save Asはセッションファイルを別名で保存するだけで、オーディオファイルはコピーされない。",
+        "logicNote": "Logic ProのSave Asは素材のコピー設定を選べるため、Pro Toolsとの違いに注意。"
+      }
+    ],
+    "related": ["l1-session-create", "l1-import"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Saving Sessions / Save Copy In" }
+    ],
+    "unverified": []
+  }
+]

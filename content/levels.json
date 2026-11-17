@@ -1,0 +1,197 @@
+{
+  "categories": [
+    {
+      "id": "session",
+      "label": "セッション・基礎",
+      "labelEn": "Session & Basics"
+    },
+    {
+      "id": "recording",
+      "label": "レコーディング",
+      "labelEn": "Recording"
+    },
+    {
+      "id": "editing",
+      "label": "編集",
+      "labelEn": "Editing"
+    },
+    {
+      "id": "routing",
+      "label": "ルーティング",
+      "labelEn": "Routing"
+    },
+    {
+      "id": "mixing",
+      "label": "ミキシング",
+      "labelEn": "Mixing"
+    },
+    {
+      "id": "delivery",
+      "label": "納品・ファイル管理",
+      "labelEn": "Delivery"
+    },
+    {
+      "id": "studio",
+      "label": "スタジオ実務",
+      "labelEn": "Studio Practice"
+    }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "title": "Pro Tools基礎",
+      "titleEn": "Pro Tools Fundamentals",
+      "summary": "画面構成・セッション作成・オーディオ設定・トラックの種類など、録音を始める前に必要な土台を固める。",
+      "topics": [
+        "Pro Toolsの画面構成",
+        "Sessionの作成",
+        "サンプルレートとビットデプス",
+        "Playback Engine",
+        "I/O Setup",
+        "Audio Track",
+        "Aux Input",
+        "Master Fader",
+        "MIDI Track",
+        "Instrument Track",
+        "Edit Window",
+        "Mix Window",
+        "Audio Import",
+        "Session管理"
+      ]
+    },
+    {
+      "level": 2,
+      "title": "レコーディング",
+      "titleEn": "Recording",
+      "summary": "入力設定・モニタリング・パンチイン・ループ録音・Playlistによるテイク管理など、録音セッションを回すための技術。",
+      "topics": [
+        "Input設定",
+        "Record Enable",
+        "Input Monitoring",
+        "Pre-roll / Post-roll",
+        "Punch Recording",
+        "Loop Recording",
+        "Playlist",
+        "オーバーダビング",
+        "テイク管理",
+        "録音レベル管理",
+        "レイテンシー管理",
+        "録音時のモニタリング"
+      ]
+    },
+    {
+      "level": 3,
+      "title": "編集",
+      "titleEn": "Editing",
+      "summary": "Edit Mode・各種ツール・フェード・Clip Gain・Elastic Audio・Beat Detectiveなど、Pro Tools編集の中核技術。",
+      "topics": [
+        "Slip / Shuffle / Spot / Grid",
+        "Smart Tool",
+        "Trim Tool",
+        "Selector Tool",
+        "Grabber Tool",
+        "Fade",
+        "Crossfade",
+        "Clip Gain",
+        "Beat Detective",
+        "Elastic Audio",
+        "Vocal Comping",
+        "AudioSuite"
+      ]
+    },
+    {
+      "level": 4,
+      "title": "ルーティングとミキシング",
+      "titleEn": "Routing & Mixing",
+      "summary": "Bus・Send・Insert・VCA・サイドチェイン・オートメーションなど、ミックス環境の構築。",
+      "topics": [
+        "Bus",
+        "Aux Input",
+        "Send",
+        "Insert",
+        "Sub Group",
+        "VCA",
+        "Master Fader",
+        "Parallel Compression",
+        "Sidechain",
+        "Automation",
+        "Pre / Post Fader",
+        "Solo Safe"
+      ]
+    },
+    {
+      "level": 5,
+      "title": "プロフェッショナルな録音環境",
+      "titleEn": "Professional Recording Setup",
+      "summary": "大規模セッション・命名規則・Cue Mix・Talkback・テンプレートなど、商業スタジオ水準の録音環境。",
+      "topics": [
+        "大規模セッションの構築",
+        "トラック命名規則",
+        "カラー管理",
+        "I/Oカスタマイズ",
+        "Cue Mix",
+        "ヘッドフォンミックス",
+        "Talkback",
+        "複数ミュージシャンの録音",
+        "レイテンシー管理",
+        "セッションテンプレート",
+        "スタジオ機材との接続"
+      ]
+    },
+    {
+      "level": 6,
+      "title": "高度な編集・制作",
+      "titleEn": "Advanced Editing & Production",
+      "summary": "マルチマイク録音・位相管理・ドラム編集・Vocal Alignment・Melodyne連携・MIDI編集。",
+      "topics": [
+        "マルチマイク録音",
+        "位相管理",
+        "マルチトラックドラム編集",
+        "Vocal Alignment",
+        "Melodyne連携",
+        "MIDI編集",
+        "Instrument Track",
+        "高度なAutomation",
+        "複雑な編集ワークフロー"
+      ]
+    },
+    {
+      "level": 7,
+      "title": "ミックス・納品",
+      "titleEn": "Mix & Delivery",
+      "summary": "ミックスリコール・Stem Export・Bounce・Consolidate・セッション整理・他スタジオへの受け渡し。",
+      "topics": [
+        "ミックスリコール",
+        "Stem Export",
+        "Bounce",
+        "Consolidate",
+        "セッション整理",
+        "ファイル管理",
+        "他スタジオへの受け渡し",
+        "納品仕様",
+        "アーカイブ"
+      ]
+    },
+    {
+      "level": 8,
+      "title": "スタジオ実務",
+      "titleEn": "Studio Practice",
+      "summary": "アシスタントエンジニアの役割・マイキング・パッチベイ・コンソール・トラブル対応・クライアント対応。",
+      "topics": [
+        "アシスタントエンジニアの役割",
+        "レコーディング前の準備",
+        "マイク選定",
+        "マイキング",
+        "マイクプリアンプ",
+        "アナログアウトボード",
+        "パッチベイ",
+        "コンソール",
+        "信号経路",
+        "録音トラブル対応",
+        "クライアント対応",
+        "セッション進行管理",
+        "エンジニアとのコミュニケーション"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,617 @@
+[
+  {
+    "id": "l3-edit-modes",
+    "level": 3,
+    "order": 1,
+    "title": "Edit Mode：Shuffle / Slip / Spot / Grid",
+    "titleEn": "Edit Modes",
+    "category": "editing",
+    "difficulty": 2,
+    "minutes": 20,
+    "prerequisites": ["l1-interface"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "Pro Toolsの編集操作は、Toolbar左上の **Edit Mode** によって挙動が変わる。**Shuffle**（クリップを詰めて動かす）、**Slip**（自由に動かす）、**Spot**（数値で位置を指定）、**Grid**（グリッドにスナップ）の4つ。同じ操作でもモードによって結果が大きく異なるため、『今どのモードか』を常に意識することが編集事故を防ぐ第一歩。",
+    "steps": [
+      { "text": "Shuffle：クリップの移動・削除・トリムで、後続のクリップが詰められる/押し出される。", "shortcut": { "mac": "F1（または Option + 1）", "win": "F1（または Alt + 1）" } },
+      { "text": "Slip：クリップを自由な位置に動かせる。他のクリップは影響を受けない。最も基本のモード。", "shortcut": { "mac": "F2（または Option + 2）", "win": "F2（または Alt + 2）" } },
+      { "text": "Spot：クリップをクリックするとSpotダイアログが開き、開始位置などを数値で指定できる。映像のタイムコードに合わせる作業で多用。", "shortcut": { "mac": "F3（または Option + 3）", "win": "F3（または Alt + 3）" } },
+      { "text": "Grid：選択やクリップ移動がグリッド値にスナップする。Absolute Grid と Relative Grid がある。グリッド値はToolbarのGrid欄で設定。", "shortcut": { "mac": "F4（または Option + 4）", "win": "F4（または Alt + 4）" } },
+      { "text": "Grid値の設定と、Nudge値（テンキーの + / − でクリップや選択を微小移動する量）を確認する。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Snap / Drag Mode（Overlap, No Overlap, X-Fade, Shuffle R, Shuffle L）",
+      "equivalent": "Slip ≒ Snapオフ、Grid ≒ Snapオン、Shuffle ≒ Drag ModeのShuffle L / Shuffle R、Spot ≒ リージョンの位置を数値で指定する操作（Region Inspectorや Move to Playhead等）。",
+      "differences": [
+        "Logic ProはSnap設定とDrag Modeが独立しているが、Pro ToolsはEdit Modeが1つに統合されている。",
+        "Pro ToolsのShuffleモードはトリムや削除にも影響するため、意図せずに曲全体の後半がずれる事故が起こりやすい。",
+        "Spotモードに完全一致するLogic Proの機能はない（近い操作は複数存在）。"
+      ],
+      "logicShortcut": "Snap切り替え: N（既定）"
+    },
+    "useCases": [
+      "ボーカル編集は基本的にSlipで行い、ドラムのループ素材の配置はGridで行う。",
+      "映像に合わせたSE配置ではSpotでタイムコードを入力する。"
+    ],
+    "cautions": [
+      "Shuffleモードのまま編集すると、選択したトラックの後続クリップが全て移動してしまう。録音済みのマルチトラックでは同期がずれる重大事故になる。",
+      "Shuffleモードをロックする機能（Shuffle Lock）がある。スタジオによっては事故防止のために使う。"
+    ],
+    "mistakes": [
+      "Shuffleモードのまま不要部分を削除し、そのトラックだけ後半が前に詰まって他のトラックとずれる。",
+      "Gridモードでボーカルを動かし、意図しないグリッド位置にスナップしてタイミングが崩れる。"
+    ],
+    "keyPoints": [
+      "F1 Shuffle / F2 Slip / F3 Spot / F4 Grid",
+      "迷ったらSlip。Shuffleは意図があるときだけ",
+      "編集前に必ずEdit Modeを確認する"
+    ],
+    "terms": [
+      { "term": "Edit Mode", "desc": "編集操作の挙動を決めるモード（Shuffle / Slip / Spot / Grid）。" },
+      { "term": "Nudge", "desc": "クリップや選択範囲を設定した量だけ微小移動する機能。" },
+      { "term": "Absolute / Relative Grid", "desc": "Absoluteはグリッド線へスナップ、Relativeは元の位置からグリッド値単位で移動。" }
+    ],
+    "quiz": [
+      {
+        "q": "クリップを削除したら後ろのクリップが全て前に詰まってしまった。Edit Modeは何だった可能性が高い？",
+        "choices": ["Slip", "Shuffle", "Spot", "Grid"],
+        "answer": 1,
+        "explanation": "Shuffleモードでは削除・移動により後続のクリップが詰められる。",
+        "logicNote": "Logic ProのDrag Mode『Shuffle L』に近い挙動。Logic Proでは削除で詰まることは通常ないため、Pro Toolsの方が注意が必要。"
+      },
+      {
+        "q": "Slipモードに切り替えるファンクションキーは？",
+        "choices": ["F1", "F2", "F3", "F4"],
+        "answer": 1,
+        "explanation": "F1 Shuffle、F2 Slip、F3 Spot、F4 Grid。",
+        "logicNote": "Logic ProではSnapのオン/オフ（N）で近い切り替えをする。"
+      },
+      {
+        "q": "映像のタイムコード位置にクリップを正確に配置したい。最適なEdit Modeは？",
+        "choices": ["Shuffle", "Slip", "Spot", "Grid"],
+        "answer": 2,
+        "explanation": "Spotモードではクリップをクリックするとダイアログで開始位置などを数値指定できる。",
+        "logicNote": "Logic Proに完全一致する機能はない。Region Inspectorで位置を入力する操作が近い。"
+      }
+    ],
+    "related": ["l3-tools", "l3-fades"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Edit Modes" }
+    ],
+    "unverified": ["Option(Alt) + 1〜4 によるEdit Mode切り替え"]
+  },
+  {
+    "id": "l3-tools",
+    "level": 3,
+    "order": 2,
+    "title": "Edit Tools：Trim / Selector / Grabber / Smart Tool",
+    "titleEn": "Edit Tools & Smart Tool",
+    "category": "editing",
+    "difficulty": 2,
+    "minutes": 25,
+    "prerequisites": ["l3-edit-modes"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "Pro ToolsのEdit Toolは、**Zoomer**、**Trim**、**Selector**、**Grabber**、**Scrubber**、**Pencil** と、Trim・Selector・Grabberを位置に応じて自動で切り替える **Smart Tool** で構成される。Smart Toolではクリップの上半分で選択（Selector）、下半分で移動（Grabber）、端でトリム（Trim）、上の角でフェード作成、下の角付近やクリップ境界でクロスフェード作成ができる。実務ではSmart Toolを常用するのが一般的。",
+    "steps": [
+      { "text": "Zoomer：F5 / Trim：F6 / Selector：F7 / Grabber：F8 / Scrubber：F9 / Pencil：F10。", "shortcut": { "mac": "F5〜F10", "win": "F5〜F10" } },
+      { "text": "Smart Tool：F6+F7 または F7+F8 を同時に押す（またはToolbarのSmart Toolブラケットをクリック）。", "shortcut": { "mac": "F6 + F7", "win": "F6 + F7" } },
+      { "text": "Escキーで Edit Tool を順に切り替えられる。" },
+      { "text": "Trim：クリップの始点/終点をドラッグして長さを調整。元のオーディオファイルは削除されない（非破壊編集）。" },
+      { "text": "Selector：範囲を選択。選択範囲は再生範囲・録音範囲・編集対象になる。" },
+      { "text": "Grabber：クリップを選択・移動。Option(Alt)+ドラッグでコピー。" },
+      { "text": "クリップを選択範囲で分割（Separate Clip）。", "shortcut": { "mac": "Cmd + E", "win": "Ctrl + E" } },
+      { "text": "Commands Keyboard Focus（Edit Window右上のa-zボタン）を有効にすると、B（分割）、A/S（カーソル位置で前/後ろをトリム）などの1キー操作が使える。", "shortcut": { "mac": "Cmd + Option + 1", "win": "Ctrl + Alt + 1" } }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Pointer Tool / Marquee Tool / Scissors Tool / Fade Tool",
+      "equivalent": "Selector ≒ Marquee Tool、Grabber ≒ Pointer Tool、Trim ≒ Pointer Toolでリージョン端をドラッグ、Smart Tool ≒ Logic ProのPointer Toolがクリック位置でトリム・フェード・ループに切り替わる挙動。",
+      "differences": [
+        "Logic ProはLeft-click Tool / Command-click Toolの2種類を割り当てる方式。Pro ToolsはSmart Toolによる位置依存の自動切り替えが中心。",
+        "Pro Toolsでは『選択範囲（Selector）』と『クリップ選択（Grabber）』の区別が重要で、編集コマンドが選択範囲に対して働く。",
+        "Logic ProのScissorsに相当する専用ツールはなく、選択して Separate（Cmd/Ctrl+E、またはB）で分割する。"
+      ],
+      "logicShortcut": "Split at Playhead: Cmd + T（既定）"
+    },
+    "useCases": [
+      "Smart Toolのまま、ボーカルのブレス部分を上半分で選択して削除し、角をドラッグしてフェードを付ける。",
+      "Commands Keyboard Focusをオンにして、Bでどんどん分割しながら編集する。"
+    ],
+    "cautions": [
+      "Commands Keyboard Focus中は、アルファベットキーが編集コマンドとして働く（トラック名入力などは別）。意図しないキー入力で編集が実行されることがある。",
+      "Smart Toolのトラック高さが低いと、上下半分の判定が難しくなる。適度にトラックを拡大する。"
+    ],
+    "mistakes": [
+      "Selectorで範囲を選んだつもりがGrabberでクリップを動かしてしまう（Smart Toolの上下判定ミス）。",
+      "Commands Keyboard Focusの存在を知らず、キーを押したら勝手に編集される。"
+    ],
+    "keyPoints": [
+      "F5 Zoomer / F6 Trim / F7 Selector / F8 Grabber / F9 Scrubber / F10 Pencil",
+      "Smart Tool = F6+F7（上半分=選択、下半分=移動、端=トリム、角=フェード）",
+      "分割：Cmd(Ctrl) + E、Commands Keyboard Focus中は B"
+    ],
+    "terms": [
+      { "term": "Smart Tool", "desc": "Trim/Selector/Grabberをカーソル位置に応じて自動で切り替えるツール。" },
+      { "term": "Separate Clip", "desc": "選択範囲または挿入位置でクリップを分割する操作。" },
+      { "term": "Commands Keyboard Focus", "desc": "1キーで編集コマンドを実行できるキーボードフォーカス。" },
+      { "term": "Non-destructive Editing", "desc": "元のオーディオファイルを変更しない編集。" }
+    ],
+    "quiz": [
+      {
+        "q": "Smart Toolでクリップの『下半分』をドラッグするとどうなる？",
+        "choices": ["範囲が選択される", "クリップが移動する（Grabber）", "フェードが作成される", "音量が変わる"],
+        "answer": 1,
+        "explanation": "Smart Toolでは上半分がSelector、下半分がGrabber、端がTrimとして働く。",
+        "logicNote": "Logic ProのPointer Toolもクリック位置で機能が変わるが、上下で選択/移動を切り替える仕組みはPro Tools特有。"
+      },
+      {
+        "q": "Commands Keyboard Focusがオンのとき、Bキーの機能は？",
+        "choices": ["Bounce", "クリップの分割（Separate）", "Beat Detective", "Bus作成"],
+        "answer": 1,
+        "explanation": "Commands Keyboard Focus中のBはSeparate Clip。",
+        "logicNote": "Logic ProではSplit at Playheadは既定でCmd+T。"
+      }
+    ],
+    "related": ["l3-edit-modes", "l3-fades"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Edit Tools / Smart Tool / Keyboard Focus" }
+    ],
+    "unverified": ["Commands Keyboard Focus の A / S キーの機能（Trim Start/End to Insertion）"]
+  },
+  {
+    "id": "l3-fades",
+    "level": 3,
+    "order": 3,
+    "title": "Fade・Crossfade",
+    "titleEn": "Fades & Crossfades",
+    "category": "editing",
+    "difficulty": 2,
+    "minutes": 20,
+    "prerequisites": ["l3-tools"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "クリップの編集点では、波形が途中で途切れることでクリックノイズが発生しやすい。**Fade In / Fade Out** と、2つのクリップの境目をなめらかにつなぐ **Crossfade** で処理する。Pro Toolsのフェードはクリップの上に作られる編集オブジェクトで、形状（カーブ）やリンク（Equal Power / Equal Gain）を選べる。",
+    "steps": [
+      { "text": "クリップの先頭/末尾や境目をまたいで範囲選択し、Edit > Fades > Create...（Fadesダイアログ）を開く。", "shortcut": { "mac": "Cmd + F", "win": "Ctrl + F" } },
+      { "text": "Fadesダイアログでカーブの形状、クロスフェードのリンク（Equal Power / Equal Gain / None）を選ぶ。" },
+      { "text": "Smart Toolでクリップ上端の角をドラッグするとフェードイン/アウトを作成できる。クリップ境界の下部付近をドラッグするとクロスフェードを作成。" },
+      { "text": "複数のクリップをまとめて選択してFadesダイアログを開くと、Batch Fadesとして一括でフェードを作成できる。" },
+      { "text": "既存のフェードをダブルクリックすると、形状を編集できる。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Fade Tool / Region Inspector の Fade In・Fade Out / Drag Mode X-Fade",
+      "equivalent": "Logic ProのFade ToolやRegion InspectorのFade設定、Drag ModeのX-Fadeに相当。",
+      "differences": [
+        "Logic Proのフェードはリージョンのパラメータとして扱われるが、Pro Toolsのフェードはクリップとは別の編集オブジェクト（フェードファイル）として作成される。",
+        "Pro ToolsではEqual Power / Equal Gainなどのクロスフェード特性を明示的に選ぶのが一般的。",
+        "Batch Fadesによる複数クリップへの一括処理が編集ワークフローの中心にある。"
+      ]
+    },
+    "useCases": [
+      "ボーカルのコンピング後、全ての編集点にクロスフェードを一括で付ける。",
+      "ギターの曲終わりの余韻を自然にフェードアウトさせる。"
+    ],
+    "cautions": [
+      "相関の低い素材（別テイク同士など）のクロスフェードではEqual Power、同じ素材（位相が揃った素材）ではEqual Gainが向くとされる。結果は必ず耳で確認する。",
+      "長すぎるクロスフェードは2つのテイクが重なって聞こえ、二重に聞こえる原因になる。"
+    ],
+    "mistakes": [
+      "編集点にフェードを付け忘れ、プチッというクリックノイズが残る。",
+      "ドラムのアタックの直前に長いフェードインを掛け、アタック感を失う。"
+    ],
+    "keyPoints": [
+      "Fadesダイアログ：Cmd(Ctrl) + F",
+      "編集点には原則フェード/クロスフェード",
+      "Equal Power（異なる素材）/ Equal Gain（同じ素材）を使い分け、耳で確認"
+    ],
+    "terms": [
+      { "term": "Crossfade", "desc": "2つのクリップの境目で、片方をフェードアウトしつつもう片方をフェードインしてつなぐ処理。" },
+      { "term": "Equal Power", "desc": "クロスフェード中のパワー（エネルギー）を一定に保つ特性。" },
+      { "term": "Equal Gain", "desc": "クロスフェード中の振幅の和を一定に保つ特性。" },
+      { "term": "Batch Fades", "desc": "複数の編集点にまとめてフェードを作成する機能。" }
+    ],
+    "quiz": [
+      {
+        "q": "Fadesダイアログを開くショートカット（Mac）は？",
+        "choices": ["Cmd + F", "Cmd + D", "Option + F", "Cmd + E"],
+        "answer": 0,
+        "explanation": "Cmd + F（WindowsはCtrl + F）。範囲選択してから実行する。",
+        "logicNote": "Logic ProのCmd+Fは検索系の機能であることが多いので混同しない。"
+      },
+      {
+        "q": "別テイク同士のボーカルをつなぐクロスフェードで、一般的に選ばれるリンク特性は？",
+        "choices": ["Equal Gain", "Equal Power", "None", "Linear only"],
+        "answer": 1,
+        "explanation": "相関の低い素材同士はEqual Powerで音量の落ち込みを防ぐのが一般的。ただし最終判断は耳で行う。",
+        "logicNote": "Logic Proでもクロスフェードのカーブは選べるが、Pro Toolsではより明示的に選択する。"
+      }
+    ],
+    "related": ["l3-tools", "l3-comping", "l3-clip-gain"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Fades and Crossfades" }
+    ],
+    "unverified": ["Smart Toolでのクロスフェード作成の当たり判定位置の詳細"]
+  },
+  {
+    "id": "l3-clip-gain",
+    "level": 3,
+    "order": 4,
+    "title": "Clip Gain",
+    "titleEn": "Clip Gain",
+    "category": "editing",
+    "difficulty": 2,
+    "minutes": 15,
+    "prerequisites": ["l3-tools"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "**Clip Gain** はクリップ単位でゲインを調整する機能で、**プラグイン（インサート）より前段** で効く。フェーダーのオートメーションと違い、コンプレッサーなどに入る前の音量を整えられるため、ボーカルの音量ムラ補正やブレスの音量調整に多用される。クリップ単位の固定値に加え、**Clip Gain Line** で時間変化するカーブも描ける。",
+    "steps": [
+      { "text": "クリップ左下のClip Gainアイコン（フェーダー型）をクリックしてフェーダーで調整。" },
+      { "text": "View > Clip > Clip Gain Line でClip Gainのラインを表示し、Grabber/Pencilでポイントを描いて部分的に音量を変える。" },
+      { "text": "選択範囲やクリップのClip Gainを一定量ずつ上げ下げするショートカットがある。", "shortcut": { "mac": "Control + Shift + ↑ / ↓", "win": "Start + Shift + ↑ / ↓", "unverified": true } },
+      { "text": "Clip Gainをオーディオに反映（Render）したり、クリアしたりできる（Edit > Clip Gain メニュー）。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Region Gain（Region Inspector）/ Gain Tool",
+      "equivalent": "Logic ProのRegion InspectorのGain、またはAudio Track Editor上のGain調整に相当。時間変化するカーブは、Logic ProのRegion-based Automation（リージョンオートメーション）でGainを書く操作が近い。",
+      "differences": [
+        "Pro ToolsのClip Gainは常にプラグイン（インサート）より前段で処理され、フェーダーとは独立している。",
+        "Clip Gain Lineによってクリップ上に直接ゲインカーブを描けるのがPro Toolsの大きな特徴。",
+        "Logic ProのRegion Gainは固定値が中心で、カーブ編集は別の仕組みになる。"
+      ]
+    },
+    "useCases": [
+      "ボーカルの子音（S、Tなど）だけ数dB下げてディエッサーの負担を減らす。",
+      "サビで声が大きくなる部分をClip Gainで均して、コンプレッサーのかかり方を一定にする。"
+    ],
+    "cautions": [
+      "Clip Gainはプリフェーダー・プリインサート。フェーダーのオートメーションとは役割が違う。",
+      "大幅に上げるとクリップ（歪み）の原因になる場合がある。"
+    ],
+    "mistakes": [
+      "Clip Gain Lineを非表示にしていて、なぜ音量が変わるか分からない。",
+      "フェーダーオートメーションで音量ムラを直そうとし、コンプのかかり方が変わらない。"
+    ],
+    "keyPoints": [
+      "Clip Gain = プラグインより前段のクリップ単位のゲイン",
+      "View > Clip > Clip Gain Line でカーブを表示",
+      "音量ムラの補正はコンプの前（Clip Gain）で"
+    ],
+    "terms": [
+      { "term": "Clip Gain", "desc": "クリップ単位のゲイン。インサートより前で処理される。" },
+      { "term": "Clip Gain Line", "desc": "クリップ上でClip Gainの時間変化を表示・編集するライン。" },
+      { "term": "Render", "desc": "Clip Gainなどの設定をオーディオファイルに書き込むこと。" }
+    ],
+    "quiz": [
+      {
+        "q": "Clip Gainについて正しいものは？",
+        "choices": ["フェーダーの後で処理される", "インサートされたプラグインより前段で処理される", "Master Faderにしか使えない", "録音レベルを変える"],
+        "answer": 1,
+        "explanation": "Clip Gainはクリップ単位で、プラグイン（インサート）より前段で効く。",
+        "logicNote": "Logic ProのRegion Gainも前段で効くが、Pro ToolsはClip Gain Lineでカーブを直接描ける点が大きく異なる。"
+      },
+      {
+        "q": "ボーカルのコンプレッサーのかかり方を一定にするため、大きすぎる箇所だけを事前に下げたい。最適な方法は？",
+        "choices": ["フェーダーオートメーション", "Clip Gain", "Master Fader", "Sendレベル"],
+        "answer": 1,
+        "explanation": "コンプに入る前で調整する必要があるため、Clip Gainで下げる。",
+        "logicNote": "Logic ProならRegion GainやRegionオートメーションで同様の処理ができる。"
+      }
+    ],
+    "related": ["l3-fades", "l3-audiosuite"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Clip Gain" }
+    ],
+    "unverified": ["Clip Gainを上げ下げするショートカット（Control/Start + Shift + ↑↓）", "Edit > Clip Gain メニューの項目名"]
+  },
+  {
+    "id": "l3-comping",
+    "level": 3,
+    "order": 5,
+    "title": "Vocal Comping（Playlistを使ったコンピング）",
+    "titleEn": "Vocal Comping with Playlists",
+    "category": "editing",
+    "difficulty": 3,
+    "minutes": 25,
+    "prerequisites": ["l2-loop-playlist", "l3-fades"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "**コンピング** は複数テイクから良い部分を選んで1本のベストテイクを作る作業。Pro Toolsでは、トラックのTrack Viewを **Playlists** にして全テイクを縦に並べ、各テイクの範囲を選択して **メインPlaylistへコピー（Copy Selection to Main Playlist / 昇格）** する方式が基本。コンプ後は編集点にクロスフェードを付けて仕上げる。",
+    "steps": [
+      { "text": "コンプ用の空のPlaylist（例：Vox Comp）をメインにする、またはベースとなるテイクを複製してメインにする。" },
+      { "text": "Track Viewセレクターで **Playlists** を選ぶ。メインPlaylistの下に各テイクのレーンが並ぶ。" },
+      { "text": "Soloボタン（各レーン）で個別に試聴しながら、良い部分をSelectorで選択。" },
+      { "text": "選択範囲をメインPlaylistへコピー：レーンの『↑』（Promote）ボタン、またはショートカット。", "shortcut": { "mac": "Option + Shift + ↑", "win": "Alt + Shift + ↑", "unverified": true } },
+      { "text": "全ての編集点を確認し、必要に応じてクロスフェードを付ける（Batch Fadesが便利）。" },
+      { "text": "完成したらTrack Viewを Waveform に戻す。テイクのPlaylistは削除せず残す。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Take Folder + Quick Swipe Comping",
+      "equivalent": "Logic ProのTake Folderを展開し、Quick Swipe Compingで各テイクの良い部分をドラッグして選ぶ作業に相当。",
+      "differences": [
+        "Logic ProはスワイプでComp（選択範囲）を作り、Take Folder内で自動的にクロスフェードされる。Pro Toolsはメインへ『コピーする』方式で、フェードは自分で付ける。",
+        "Pro ToolsのコンプはメインPlaylist上の普通のクリップとして存在するため、そのまま通常編集を続けられる。",
+        "Logic ProのComp（複数のComp案の保存）に相当するものとして、Pro ToolsではメインPlaylistを複製して別案を残す。"
+      ]
+    },
+    "useCases": [
+      "ボーカル5テイクから、フレーズごとにベストを選んで1本にまとめる。",
+      "エンジニアやプロデューサーが『2番Aメロの頭は3テイク目』と指示し、アシスタントがその場でコンプする。"
+    ],
+    "cautions": [
+      "フレーズの切れ目（ブレスや子音の前）で切ると自然につながりやすい。",
+      "コンプ後、必ず通して聴いて、つなぎ目の違和感・音量差・ノイズを確認する。"
+    ],
+    "mistakes": [
+      "コピー先を誤ってテイクのPlaylist自体を編集してしまい、元テイクが失われたと思う（オーディオファイルは残っているが管理が混乱する）。",
+      "つなぎ目にフェードを付け忘れる。"
+    ],
+    "keyPoints": [
+      "Track View → Playlists でテイクを並べる",
+      "範囲選択 → メインPlaylistへコピー（↑ / Promote）",
+      "つなぎ目はクロスフェード。テイクは残す"
+    ],
+    "terms": [
+      { "term": "Comping", "desc": "複数テイクの良い部分を組み合わせて1本にする作業（Compositeの略）。" },
+      { "term": "Playlists View", "desc": "トラック内の全Playlistをレーン状に表示するTrack View。" },
+      { "term": "Promote", "desc": "選択したテイク部分をメインPlaylistへ上げる操作。" }
+    ],
+    "quiz": [
+      {
+        "q": "Pro Toolsでコンピングを行うときに使うTrack Viewは？",
+        "choices": ["Waveform", "Volume", "Playlists", "Blocks"],
+        "answer": 2,
+        "explanation": "Playlists ViewでメインPlaylistの下に全テイクがレーンとして表示される。",
+        "logicNote": "Logic ProのTake Folderを開いた状態に近い。"
+      },
+      {
+        "q": "Logic ProのQuick Swipe Compingと比べたPro Toolsのコンピングの特徴は？",
+        "choices": ["スワイプで自動的にクロスフェードされる", "選択範囲をメインPlaylistへコピーし、フェードは自分で付ける", "コンピング機能がない", "MIDIでしかできない"],
+        "answer": 1,
+        "explanation": "Pro Toolsは範囲をメインへコピーする方式で、編集点のフェードは別途作成する。",
+        "logicNote": "Logic Proは自動クロスフェードされるため、Pro Toolsに移行すると付け忘れが起きやすい。"
+      }
+    ],
+    "related": ["l2-loop-playlist", "l3-fades"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Playlists（Playlists View / Track Compositing）" }
+    ],
+    "unverified": ["Copy Selection to Main Playlist のショートカット（Option/Alt + Shift + ↑）"]
+  },
+  {
+    "id": "l3-elastic-audio",
+    "level": 3,
+    "order": 6,
+    "title": "Elastic Audio",
+    "titleEn": "Elastic Audio",
+    "category": "editing",
+    "difficulty": 3,
+    "minutes": 25,
+    "prerequisites": ["l3-edit-modes"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "**Elastic Audio** はオーディオのタイミング（およびピッチ）をタイムストレッチで変更する機能。トラックごとにアルゴリズムを選んで有効化し、**Warp View** でワープマーカーを動かしてタイミングを修正したり、クオンタイズを掛けたりできる。アルゴリズムは **Polyphonic**、**Rhythmic**、**Monophonic**、**Varispeed**、**X-Form**（レンダリング専用・高品質）から素材に合わせて選ぶ。",
+    "steps": [
+      { "text": "トラックのElastic Audioプラグインセレクター（トラックの時計型アイコン付近）でアルゴリズムを選ぶ。" },
+      { "text": "Rhythmic：ドラムなど打楽器向け。Monophonic：単音のボーカル・ベース向け。Polyphonic：和音・ミックス素材向け。Varispeed：テープのように速度とピッチが連動。X-Form：高品質だがレンダリング処理のみ。" },
+      { "text": "Real-Time（リアルタイム処理）と Rendered（レンダリング処理）を選べる。CPU負荷と音質のバランスで選択。" },
+      { "text": "Track Viewを **Analysis** にしてトランジェント検出結果を確認・修正する。" },
+      { "text": "Track Viewを **Warp** にし、ワープマーカーを置いてドラッグするとタイミングが変わる。" },
+      { "text": "Event > Event Operations > Quantize でElastic Audioトラックをクオンタイズできる（Elastic Audio対応時）。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Flex Time（Flex Mode: Slicing / Rhythmic / Monophonic / Polyphonic / Speed / Tempophone）",
+      "equivalent": "Logic ProのFlex Timeにほぼ相当。トラックごとにアルゴリズム（Flex Mode）を選び、Flex Markerを動かしてタイミングを修正する考え方は同じ。",
+      "differences": [
+        "名称：Flex Marker ≒ Warp Marker、Flex Mode ≒ Elastic Audioプラグイン（アルゴリズム）。",
+        "Logic ProのSlicing（無伸縮）に相当するアルゴリズムはElastic Audioにはない。Pro Toolsでは分割＋Beat Detectiveで同様の処理をすることが多い。",
+        "Pro ToolsはReal-TimeとRenderedを明示的に切り替える。",
+        "ピッチ補正はLogic ProではFlex Pitchだが、Pro ToolsではElastic Audioのピッチ機能は限定的で、本格的なピッチ補正はMelodyne（ARA連携）等を使うのが一般的。"
+      ]
+    },
+    "useCases": [
+      "ベースの数音だけ遅れている部分をWarp Viewで前に寄せる。",
+      "ドラムのマルチトラックをグループ化して同じアルゴリズム（Rhythmic）でクオンタイズする。"
+    ],
+    "cautions": [
+      "マルチマイクのドラムを別々にElastic Audio処理すると位相関係が崩れる。グループ化して同じ解析結果で処理する必要がある。",
+      "大きなストレッチは音質劣化（アーティファクト）を生む。"
+    ],
+    "mistakes": [
+      "Elastic Audioを有効にしたまま不要な処理がかかり、CPU負荷やわずかな音質変化に気づかない。",
+      "素材に合わないアルゴリズム（例：ドラムにMonophonic）を選んでしまう。"
+    ],
+    "keyPoints": [
+      "Logic ProのFlex Time ≒ Elastic Audio",
+      "Rhythmic（打楽器）/ Monophonic（単音）/ Polyphonic（和音）/ Varispeed / X-Form",
+      "Analysis Viewで検出確認 → Warp Viewで修正",
+      "マルチマイクはグループで処理"
+    ],
+    "terms": [
+      { "term": "Warp Marker", "desc": "Elastic Audioでタイミングを変更するための基準点。" },
+      { "term": "Event Marker", "desc": "Analysis Viewで表示される、検出されたトランジェント位置。" },
+      { "term": "Real-Time / Rendered", "desc": "リアルタイム処理か、レンダリングしたファイルで再生するかの選択。" }
+    ],
+    "quiz": [
+      {
+        "q": "ドラムのタイミング修正に適したElastic Audioのアルゴリズムは？",
+        "choices": ["Monophonic", "Rhythmic", "Varispeed", "Polyphonic"],
+        "answer": 1,
+        "explanation": "Rhythmicは打楽器などアタックがはっきりした素材向け。",
+        "logicNote": "Logic ProのFlex Mode『Rhythmic』に相当する。ドラムではLogic ProのSlicingも使われるが、Elastic Audioにはない。"
+      },
+      {
+        "q": "Logic ProのFlex Markerに相当するPro Toolsの用語は？",
+        "choices": ["Event Marker", "Warp Marker", "Memory Location", "Clip Marker"],
+        "answer": 1,
+        "explanation": "Warp Viewで置くWarp Markerがタイミング変更の基準点になる。",
+        "logicNote": "類似概念。完全に同じ操作感ではない。"
+      }
+    ],
+    "related": ["l3-beat-detective", "l3-edit-modes"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Elastic Audio" }
+    ],
+    "unverified": ["Elastic Audio対応時のQuantizeメニューの正確なパス"]
+  },
+  {
+    "id": "l3-beat-detective",
+    "level": 3,
+    "order": 7,
+    "title": "Beat Detective",
+    "titleEn": "Beat Detective",
+    "category": "editing",
+    "difficulty": 4,
+    "minutes": 30,
+    "prerequisites": ["l3-tools", "l3-fades"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "**Beat Detective** は、演奏のトランジェントを検出し、(1) テンポマップの作成、(2) グルーヴの抽出、(3) クリップの分割（Clip Separation）、(4) 分割したクリップをグリッドに合わせる（Clip Conform）、(5) 隙間を埋めてクロスフェードする（Edit Smoothing）を行うツール。タイムストレッチを使わずに **クリップを切って動かす** 方式のため、ドラム編集で音質劣化なくタイミングを整えられる。マルチトラックのドラムをまとめて処理する **Collection Mode** もある。",
+    "steps": [
+      { "text": "Event > Beat Detective を開く。", "shortcut": { "mac": "Cmd + 8", "win": "Ctrl + 8" } },
+      { "text": "処理するドラムトラック群を選択し、範囲（小節単位でキリよく）を選ぶ。Selectionの欄で開始・終了の小節拍と拍子、最小単位（Contains）を設定し Capture Selection。" },
+      { "text": "Clip Separation を選び、Analyze（検出方式の選択）→ Sensitivityでトリガー位置を確認 → Separate で分割。" },
+      { "text": "Clip Conform で分割したクリップをグリッドに合わせる（Strength、Exclude Within、Swingなどで程度を調整）→ Conform。" },
+      { "text": "Edit Smoothing で隙間を埋め（Fill Gaps）、必要ならクロスフェードを付ける（Fill And Crossfade）→ Smooth。" },
+      { "text": "マルチトラックでは Collection Mode で複数トラック（キック、スネア等）の検出結果を合成してから分割すると、全トラックが同じ位置で切られ位相関係が保たれる。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Flex Time（Slicing）+ Quantize / Smart Tempo / Groove Template",
+      "equivalent": "クリップを切って動かすという点ではLogic ProのFlex Mode『Slicing』＋クオンタイズが近い。テンポマップ生成はSmart Tempo、グルーヴ抽出はGroove Templateに近い。",
+      "differences": [
+        "Beat Detectiveはタイムストレッチを使わず、物理的に分割・移動・隙間埋めを行う『手作業の自動化』。",
+        "Logic ProではFlex Timeをトラックに適用した状態で処理するが、Pro ToolsのBeat Detectiveは処理結果が通常のクリップ編集として残る。",
+        "Collection Modeによるマルチトラックの検出合成に相当する1対1の機能はLogic Proにはない（Logic ProはQ-Referenceを用いたFlex編集グループで対応）。"
+      ]
+    },
+    "useCases": [
+      "生ドラムのマルチトラック（Kick, Snare, Toms, OH, Room）をまとめてグリッドに合わせる。",
+      "演奏からテンポマップを作り、後からクリックや打ち込みを合わせる。"
+    ],
+    "cautions": [
+      "編集前に必ずPlaylistを複製しておく。",
+      "100%の強さでConformすると機械的になりすぎる。Strengthで程度を調整し、グルーヴを残す。",
+      "Edit Smoothing後、全体を通して聴いてクリックノイズや不自然な余韻がないか確認する。"
+    ],
+    "mistakes": [
+      "マルチマイクのドラムを1トラックずつ別々に処理し、位相関係を壊す。",
+      "範囲を小節の途中から選び、拍の解釈がずれる。"
+    ],
+    "keyPoints": [
+      "Beat Detective：Cmd(Ctrl) + 8",
+      "Separate → Conform → Smooth の3ステップ",
+      "マルチトラックはCollection Modeで同じ位置で切る",
+      "編集前にPlaylistを複製"
+    ],
+    "terms": [
+      { "term": "Clip Separation", "desc": "検出したトランジェント位置でクリップを分割する処理。" },
+      { "term": "Clip Conform", "desc": "分割したクリップをグリッドやグルーヴに合わせて移動する処理。" },
+      { "term": "Edit Smoothing", "desc": "移動によってできた隙間を埋め、必要に応じてクロスフェードする処理。" },
+      { "term": "Collection Mode", "desc": "複数トラックの検出結果を合成して1つのトリガー位置として使うモード。" }
+    ],
+    "quiz": [
+      {
+        "q": "Beat Detectiveでドラム編集をする正しい順序は？",
+        "choices": ["Conform → Separate → Smooth", "Separate → Conform → Smooth", "Smooth → Separate → Conform", "Separate → Smooth → Conform"],
+        "answer": 1,
+        "explanation": "まず分割（Clip Separation）、次にグリッドへ合わせ（Clip Conform）、最後に隙間処理（Edit Smoothing）。",
+        "logicNote": "Logic ProのFlex（Slicing）＋クオンタイズでは一度に行われる処理を、Pro Toolsでは段階的に行う。"
+      },
+      {
+        "q": "マルチマイクのドラムをBeat Detectiveで編集する際、位相関係を保つために使う機能は？",
+        "choices": ["Elastic Audio", "Collection Mode", "Clip Gain", "Spot Mode"],
+        "answer": 1,
+        "explanation": "Collection Modeで複数トラックの検出を合成し、全トラックを同じ位置で分割する。",
+        "logicNote": "Logic ProではQ-Referenceを設定したFlex編集グループで同様の目的を達成する。"
+      }
+    ],
+    "related": ["l3-elastic-audio", "l3-fades"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "Beat Detective" }
+    ],
+    "unverified": ["Beat Detectiveの各パラメータの英語表記（Exclude Within等）"]
+  },
+  {
+    "id": "l3-audiosuite",
+    "level": 3,
+    "order": 8,
+    "title": "AudioSuite（ファイルベース処理）",
+    "titleEn": "AudioSuite",
+    "category": "editing",
+    "difficulty": 2,
+    "minutes": 15,
+    "prerequisites": ["l3-tools"],
+    "ptVersion": "Pro Tools 2023.x〜2024.x",
+    "reviewStatus": "draft",
+    "overview": "**AudioSuite** は、プラグインの効果を選択範囲のオーディオに書き込んで新しいファイルを作るオフライン（ファイルベース）処理。リアルタイムで処理するInsertと違いCPU負荷が残らず、リバース、ノーマライズ、ゲイン、部分的なEQ・ノイズ除去などに使う。結果は新しいクリップとして作成されるため、元ファイルは残る（非破壊）。",
+    "steps": [
+      { "text": "処理したい範囲（クリップ）を選択。" },
+      { "text": "AudioSuite メニューからプラグインを選ぶ（例：Other > Reverse、Other > Normalize など）。" },
+      { "text": "ウィンドウ下部で処理単位（Clip by Clip / Entire Selection）、出力方法（Create Continuous File / Create Individual Files）、Handle（前後の余白）を設定。" },
+      { "text": "Preview で試聴し、Render（バージョンによっては Process）で処理を実行。" },
+      { "text": "Reverb等の余韻が必要な処理では、範囲の後ろに余白を取ってから処理する（Reverse Reverb等）。" }
+    ],
+    "logic": {
+      "match": "similar",
+      "logicName": "Selection-Based Processing / Audio File Editor の Functions",
+      "equivalent": "Logic ProのSelection-Based Processing（選択範囲にプラグインを適用してレンダリング）や、Audio File Editorの関数（Reverse、Normalizeなど）に相当。",
+      "differences": [
+        "Pro ToolsのAudioSuiteはほぼ全てのAAXプラグインで使え、編集ワークフローに深く組み込まれている。",
+        "Handle（クリップ前後の余白）の扱いや、Clip by Clip / Entire Selection の選択など、処理単位を細かく指定できる。",
+        "Logic ProのAudio File Editorでの関数は元ファイルを直接変更する（破壊的）場合があるが、AudioSuiteは新しいファイルを作る。"
+      ]
+    },
+    "useCases": [
+      "シンバルのリバース効果を作る（Reverse）。",
+      "ボーカルの一部分だけにノイズ除去を掛ける。",
+      "特定のフレーズだけにEQを掛け、トラック全体のInsertは使わない。"
+    ],
+    "cautions": [
+      "AudioSuiteで作られたファイルはAudio Filesフォルダに追加される。処理を繰り返すとファイルが増える。",
+      "Clip by Clip と Entire Selection の違いで、ノーマライズ等の結果が変わる。"
+    ],
+    "mistakes": [
+      "AudioSuiteの処理単位を確認せず、複数クリップが別々にノーマライズされて音量バランスが崩れる。",
+      "リバーブのAudioSuite処理で余白を取らず、余韻が途中で切れる。"
+    ],
+    "keyPoints": [
+      "AudioSuite = 選択範囲へのオフライン処理（新しいファイルを作成）",
+      "Clip by Clip / Entire Selection、Handle を確認",
+      "Preview → Render"
+    ],
+    "terms": [
+      { "term": "AudioSuite", "desc": "プラグイン処理をオーディオファイルに書き込むオフライン処理。" },
+      { "term": "Handle", "desc": "クリップの前後に残す余白のオーディオ。" },
+      { "term": "AAX", "desc": "Pro Toolsのプラグイン形式（Avid Audio eXtension）。" }
+    ],
+    "quiz": [
+      {
+        "q": "AudioSuiteの特徴として正しいものは？",
+        "choices": ["常にリアルタイムでCPUを消費する", "選択範囲を処理した新しいファイルを作る", "元のオーディオファイルを上書きする", "MIDIにしか使えない"],
+        "answer": 1,
+        "explanation": "AudioSuiteは処理結果を新しいファイルとして作成し、元ファイルは残る。",
+        "logicNote": "Logic ProのSelection-Based Processingに近い。"
+      },
+      {
+        "q": "複数クリップを、相対的な音量差を保ったままノーマライズしたい。設定すべき処理単位は？",
+        "choices": ["Clip by Clip", "Entire Selection", "Create Individual Files", "Handle 0"],
+        "answer": 1,
+        "explanation": "Entire Selectionなら選択範囲全体を1つとして解析するため、クリップ間の音量差が保たれる。Clip by Clipでは各クリップが個別にノーマライズされる。",
+        "logicNote": "Logic Proで複数リージョンを個別にノーマライズする場合と同じ注意点。"
+      }
+    ],
+    "related": ["l3-clip-gain", "l3-tools"],
+    "sources": [
+      { "title": "Avid Pro Tools Reference Guide", "section": "AudioSuite Processing" },
+      { "title": "Avid Audio Plug-ins Guide" }
+    ],
+    "unverified": ["実行ボタンの名称（Render / Process）はバージョンにより異なる"]
+  }
+]

@@ -1,0 +1,193 @@
+[
+  {
+    "id": "p1-capstone",
+    "level": 1,
+    "category": "session",
+    "capstone": true,
+    "title": "指定仕様で録音可能なセッションを作る",
+    "description": "48kHz / 24bit / BWF(.wav) の新規セッションを作成し、Mono Audio Track 2本（Vox, Gtr）、Stereo Aux Input 1本（Verb）、Master Fader 1本を作成。Playback Engine と I/O Setup を確認し、Vox に入力を割り当てて録音待機状態にする。",
+    "conditions": [
+      "セッションのサンプルレートが48kHz、ビットデプスが24bitである",
+      "トラック名が Vox / Gtr / Verb / Master になっている",
+      "Vox の Input に実際に信号が来ている入力が割り当てられている",
+      "Vox を Record Enable にするとメーターが振れる"
+    ],
+    "hints": [
+      "File > Create New... (Dashboard) でセッション仕様を設定",
+      "Track > New... でトラックをまとめて作成できる",
+      "Setup > Playback Engine でオーディオインターフェースを選択",
+      "Setup > I/O でインプット名を確認"
+    ],
+    "logicSimilar": "Logic Pro で「新規プロジェクト → オーディオトラック作成 → 入力を選択 → 録音可能にする」とほぼ同じ流れ。ただし Pro Tools はセッション作成時にサンプルレートとファイル形式を決める点が重要。",
+    "difficulty": 1,
+    "passCriteria": "全ての完成条件を満たし、実際にPro Tools上で再現できること。",
+    "minutes": 30,
+    "relatedLessons": [
+      "l1-session-create",
+      "l1-playback-engine",
+      "l1-io-setup",
+      "l1-tracks"
+    ]
+  },
+  {
+    "id": "p2-capstone",
+    "level": 2,
+    "category": "recording",
+    "capstone": true,
+    "title": "ボーカル複数テイク録音とベストテイク作成",
+    "description": "ボーカル（または任意の楽器）を同じ範囲で4テイク録音し、Playlistに整理。Playlist表示で各テイクを比較し、良い部分を選んでメインPlaylistへコンピングする。",
+    "conditions": [
+      "4つのテイクがそれぞれ別のPlaylistとして残っている",
+      "Playlist名からテイク番号が判別できる",
+      "メインPlaylistに複数テイクから選んだコンプが作られている",
+      "コンプのつなぎ目にクリックノイズがない（必要に応じてクロスフェード）"
+    ],
+    "hints": [
+      "ループ録音を使う場合は Preferences の『ループ録音時にプレイリストを自動作成』設定を確認",
+      "Track View を Playlists に切り替えると全テイクが縦に並ぶ",
+      "範囲を選択してメインPlaylistへコピー（Copy Selection to Main Playlist）"
+    ],
+    "logicSimilar": "Logic Pro のサイクル録音 → Take Folder → Quick Swipe Comping に相当。Pro Tools ではテイクは Playlist として管理し、範囲選択でメインへ上げる。",
+    "difficulty": 2,
+    "passCriteria": "全ての完成条件を満たし、実際にPro Tools上で再現できること。",
+    "minutes": 45,
+    "relatedLessons": [
+      "l2-loop-playlist",
+      "l3-comping"
+    ]
+  },
+  {
+    "id": "p3-capstone",
+    "level": 3,
+    "category": "editing",
+    "capstone": true,
+    "title": "ボーカル・ギター・ドラムの編集",
+    "description": "ボーカルはブレス処理とClip Gainで音量を整え、ギターは不要部分のカットとフェード、ドラムはElastic AudioまたはBeat Detectiveで軽くタイミングを整える。",
+    "conditions": [
+      "全ての編集点にフェード/クロスフェードがありクリックノイズがない",
+      "ボーカルのClip Gainで大きな音量差が整えられている",
+      "ドラム編集後も位相関係（複数マイク間）が崩れていない",
+      "編集前のPlaylistを複製して残してある"
+    ],
+    "hints": [
+      "編集前に Playlist を Duplicate しておく",
+      "Smart Tool（F6+F7）で選択・トリム・フェードを切り替えずに操作",
+      "マルチマイクのドラムはトラックをグループ化してから編集"
+    ],
+    "logicSimilar": "Logic Pro のリージョン編集・Region Gain・Flex Time に相当。Pro Tools は Edit Mode（Slip/Grid等）とツールの組み合わせで操作が決まる点が大きく異なる。",
+    "difficulty": 3,
+    "passCriteria": "全ての完成条件を満たし、実際にPro Tools上で再現できること。",
+    "minutes": 60,
+    "relatedLessons": [
+      "l3-tools",
+      "l3-fades",
+      "l3-clip-gain",
+      "l3-elastic-audio",
+      "l3-beat-detective"
+    ]
+  },
+  {
+    "id": "p4-capstone",
+    "level": 4,
+    "category": "mixing",
+    "capstone": true,
+    "title": "バンド楽曲のミキシング環境構築",
+    "description": "Drums / Bass / Gtr / Vox のサブグループ、リバーブ・ディレイ用Aux、ドラムのパラレルコンプ、VCAを備えたミックス環境を構築する。",
+    "conditions": [
+      "各楽器群がSub Group Auxにまとまっている",
+      "リバーブ/ディレイがSend経由で使われている",
+      "パラレルコンプ用Auxがある",
+      "VCAで楽器群をまとめて操作できる"
+    ],
+    "hints": [
+      "複数トラックを選択して Option(Alt)+Shift で一括設定",
+      "Busの名前はI/O Setupで管理"
+    ],
+    "logicSimilar": "Logic Pro の Bus / Aux / Track Stack (Summing Stack) / VCA に相当。",
+    "difficulty": 3,
+    "passCriteria": "全ての完成条件を満たし、実際にPro Tools上で再現できること。",
+    "minutes": 60,
+    "relatedLessons": []
+  },
+  {
+    "id": "p5-capstone",
+    "level": 5,
+    "category": "studio",
+    "capstone": true,
+    "title": "4人組ロックバンドの録音セッション構築",
+    "description": "Drums(マルチマイク)・Bass(DI+Amp)・Gtr×2・Vox の同時録音セッションを、Cue Mix 2系統付きで構築する。",
+    "conditions": [
+      "命名規則とカラーが統一されている",
+      "各奏者用のCue Mixが独立して調整できる",
+      "テンプレートとして保存されている"
+    ],
+    "hints": [
+      "Cue用SendはPre Fader"
+    ],
+    "logicSimilar": "Logic Pro のパーソナルモニターミックス（Sendを使ったキュー）に相当。",
+    "difficulty": 4,
+    "passCriteria": "全ての完成条件を満たし、実際にPro Tools上で再現できること。",
+    "minutes": 60,
+    "relatedLessons": []
+  },
+  {
+    "id": "p6-capstone",
+    "level": 6,
+    "category": "editing",
+    "capstone": true,
+    "title": "マルチマイクドラムの編集と位相確認",
+    "description": "マルチマイクで録音されたドラムをグループ化して編集し、キック・スネアの位相（極性・時間差）を確認する。",
+    "conditions": [
+      "全マイクが同一位置で編集されている",
+      "極性反転の要否を判断し記録している"
+    ],
+    "hints": [
+      "Edit Group を使用"
+    ],
+    "logicSimilar": "Logic Pro の Flex 編集グループ（Q-Reference）に相当。",
+    "difficulty": 4,
+    "passCriteria": "全ての完成条件を満たし、実際にPro Tools上で再現できること。",
+    "minutes": 60,
+    "relatedLessons": []
+  },
+  {
+    "id": "p7-capstone",
+    "level": 7,
+    "category": "delivery",
+    "capstone": true,
+    "title": "セッション整理とステム・完成音源の書き出し",
+    "description": "指定仕様でセッションを整理し、ステムと2mixを書き出す。",
+    "conditions": [
+      "全ステムが同じ開始位置から書き出されている",
+      "Save Copy In で受け渡し用セッションを作成している"
+    ],
+    "hints": [
+      "Bounce Mix / Track Bounce を検討"
+    ],
+    "logicSimilar": "Logic Pro の Bounce / Export All Tracks as Audio Files に相当。",
+    "difficulty": 3,
+    "passCriteria": "全ての完成条件を満たし、実際にPro Tools上で再現できること。",
+    "minutes": 45,
+    "relatedLessons": []
+  },
+  {
+    "id": "p8-capstone",
+    "level": 8,
+    "category": "studio",
+    "capstone": true,
+    "title": "商業スタジオでのバンドレコーディング総合シミュレーション",
+    "description": "セッション準備から録音・トラブル対応・終了処理までを、アシスタントの立場で通して行う。",
+    "conditions": [
+      "事前準備チェックリストを作成している",
+      "トラブル発生時に適切な順序で切り分けできる"
+    ],
+    "hints": [
+      "信号経路は音源側から順に確認する"
+    ],
+    "logicSimilar": "—（DAW固有ではないスタジオ実務）",
+    "difficulty": 5,
+    "passCriteria": "全ての完成条件を満たし、実際にPro Tools上で再現できること。",
+    "minutes": 90,
+    "relatedLessons": []
+  }
+]
